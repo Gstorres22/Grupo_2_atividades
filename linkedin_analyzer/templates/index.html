@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisador de Perfil LinkedIn</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Analisador de Perfil LinkedIn</h1>
+            <p>Faca upload do seu perfil exportado em PDF e receba uma auditoria completa de um Tech Recruiter Senior IA.</p>
+        </header>
+
+        <section class="upload-section">
+            <form id="uploadForm" enctype="multipart/form-data">
+                <div class="file-drop-area" id="fileDropArea">
+                    <span class="file-message">Arraste e solte o seu PDF aqui ou clique para selecionar o arquivo</span>
+                    <input type="file" name="pdf_file" id="pdf_file" accept=".pdf" required>
+                </div>
+                <button type="submit" id="submitBtn" class="btn">Analisar Perfil com IA</button>
+            </form>
+            <div id="loadingIndicator" class="hidden">
+                <div class="spinner"></div>
+                <p>A Inteligencia Artificial esta analisando a sua narrativa de carreira. Isso pode levar alguns segundos...</p>
+            </div>
+        </section>
+
+        <section id="resultsSection" class="results-section hidden">
+            <h2>Auditoria do Perfil</h2>
+            <div id="resultContent" class="markdown-body"></div>
+        </section>
+        
+        <div id="errorSection" class="error-section hidden">
+            <p id="errorMessage"></p>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const form = document.getElementById('uploadForm');
+        const fileInput = document.getElementById('pdf_file');
+        const fileDropArea = document.getElementById('fileDropArea');
+        const fileMessage = document.querySelector('.file-message');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const submitBtn = document.getElementById('submitBtn');
+        const resultsSection = document.getElementById('resultsSection');
+        const resultContent = document.getElementById('resultContent');
+        const errorSection = document.getElementById('errorSection');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // File input change handler
+        fileInput.addEventListener('change', function() {
+            if (this.files && this.files.length > 0) {
+                fileMessage.textContent = "Arquivo selecionado: " + this.files[0].name;
+                fileDropArea.classList.add('active');
+            } else {
+                fileMessage.textContent = "Arraste e solte o seu PDF aqui ou clique para selecionar o arquivo";
+                fileDropArea.classList.remove('active');
+            }
+        });
+
+        // Drag and drop events
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            fileDropArea.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            fileDropArea.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            fileDropArea.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight(e) {
+            fileDropArea.classList.add('active');
+        }
+
+        function unhighlight(e) {
+            if (!fileInput.files || fileInput.files.length === 0) {
+                fileDropArea.classList.remove('active');
+            }
+        }
+
+        fileDropArea.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            fileInput.files = files;
+            
+            if (files && files.length > 0) {
+                fileMessage.textContent = "Arquivo selecionado: " + files[0].name;
+            }
+        }
+
+        // Form submit handler
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            if (!fileInput.files || fileInput.files.length === 0) {
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('pdf_file', fileInput.files[0]);
+
+            // UI State
+            submitBtn.disabled = true;
+            loadingIndicator.classList.remove('hidden');
+            resultsSection.classList.add('hidden');
+            errorSection.classList.add('hidden');
+
+            try {
+                const response = await fetch('/analyze', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Render markdown to HTML
+                    resultContent.innerHTML = marked.parse(data.result);
+                    resultsSection.classList.remove('hidden');
+                    resultsSection.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    errorMessage.textContent = data.error || "Ocorreu um erro ao processar o arquivo.";
+                    errorSection.classList.remove('hidden');
+                }
+            } catch (error) {
+                errorMessage.textContent = "Falha de comunicacao com o servidor local. Verifique se o backend esta rodando.";
+                errorSection.classList.remove('hidden');
+            } finally {
+                // Reset UI state
+                submitBtn.disabled = false;
+                loadingIndicator.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
