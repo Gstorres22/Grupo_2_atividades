@@ -1,0 +1,124 @@
+Trabalho Final — Serviços Cognitivos em
+Cloud
+Aplicação RAG com Azure AI Services
+Objetivo
+Desenvolver uma aplicação completa de RAG (Retrieval-Augmented Generation) que integre os
+conceitos abordados em aula: ingestão e chunking de documentos, indexação vetorial, exposição via
+API e deploy em nuvem. O trabalho deverá ser entregue com documentação técnica e,
+opcionalmente, com infraestrutura como código.
+O tema do domínio de conhecimento (base documental) é livre: manuais técnicos, legislação, acervo
+acadêmico, FAQs corporativos, documentos de saúde, jogos, culinária, etc.
+Arquitetura Mínima Esperada
+  ┌───────────┐   POST /api/query   ┌──────────────────────────┐
+  │  Cliente  │──────────────────── ▶ │   API (Azure Function     │
+  │  (curl /  │                     │   ou framework à escolha) │
+  │  Postman) │ ◀ ────────────────────│                          │
+  └───────────┘    resposta + fonte └────────┬─────────────────┘
+                                             │
+                             ┌───────────────┼───────────────┐
+                             ▼               ▼               ▼
+                      ┌─────────────┐ ┌──────────┐  ┌──────────────┐
+                      │ Azure OpenAI│ │  Banco   │  │  Chunker /   │
+                      │ (Chat +     │ │ Vetorial │  │  Ingestão    │
+                      │  Embeddings)│ │(AI Search│  │  de Docs     │
+                      └─────────────┘ │ ou outro)│  └──────────────┘
+                                      └──────────┘
+Requisitos e Critérios de Avaliação
+1. Chunking — 25 pts
+Implementar pipeline de ingestão que:
+Carregue pelo menos um tipo de documento (PDF, TXT, DOCX, HTML, etc.)
+Aplique uma estratégia de chunking justificada (fixo, por sentença, por seção, recursivo,
+semântico, etc.)
+Gere embeddings para cada chunk usando Azure OpenAI ( text-embedding-3-small  ou superior)
+ou outro modelo
+Persista os chunks e seus vetores no banco vetorial
+Dica: veja o  exercicio01_chunker/function_app.py  como referência de estrutura.
+2. Indexação no Banco Vetorial — 25 pts
+Criar e configurar um índice vetorial contendo, no mínimo:
+Campo de embedding (vetor)
+Campo de texto original do chunk
+Metadados (nome do arquivo, número de página, timestamp, etc.)
+Demonstrar a busca vetorial retornando os k chunks mais relevantes para uma query
+Azure AI Search é recomendado (usado em aula), mas outros bancos são aceitos: Qdrant,
+ChromaDB, Weaviate, pgvector, Pinecone, etc.
+Se usar alternativa, justificar a escolha na documentação
+3. API de Consulta RAG — 25 pts
+Expor um endpoint HTTP que:
+Receba uma pergunta do usuário (JSON:  { "question": "..." } )
+Execute a busca vetorial para recuperar os chunks mais relevantes
+Monte o contexto e chame o LLM (Azure OpenAI GPT-4o ou similar)
+Retorne a resposta gerada e as fontes utilizadas (chunk + metadado de origem)
+Estrutura mínima da resposta:
+{
+  "answer": "Resposta gerada pelo modelo...",
+  "sources": [
+    {
+      "chunk": "Trecho do documento utilizado como contexto...",
+      "source": "nome_arquivo.pdf",
+      "score": 0.92
+    }
+  ]
+}
+Framework: Azure Functions (padrão da disciplina) ou alternativas aceitas: FastAPI, Flask, Azure
+Container Apps, AWS Lambda, Google Cloud Functions, etc.
+4. Deploy em Nuvem — 20 pts
+Realizar o deploy da aplicação em um provedor cloud e gravar um vídeo demonstrando o
+funcionamento em produção
+O vídeo deve mostrar, no mínimo, 3 perguntas distintas sendo respondidas pela API deployada
+(URL em nuvem visível na gravação)
+Após a gravação, os recursos podem ser removidos — não é necessário manter o ambiente
+ativo no dia da entrega
+O deploy pode ser realizado via:
+ func azure functionapp publish  (Azure Functions)
+Metodo apresentado em aula (vs code)
+Outro provedor cloud com evidência de funcionamento
+A aplicação em execução local não pontua neste critério.
+O vídeo deve estar hospedado (YouTube, Google Drive, OneDrive, etc.) e o link incluído no
+ README.md  do repositório.
+5. Documentação de Projeto — 15 pts
+O repositório deve conter um  README.md  com, no mínimo:
+Visão geral: descrição do problema e da solução
+Arquitetura: diagrama (pode ser ASCII art, Mermaid, Draw.io, etc.)
+Como executar localmente: pré-requisitos, variáveis de ambiente, comandos
+Como fazer o deploy: passo a passo ou script
+Exemplos de uso: pelo menos 3 exemplos de consulta com resposta esperada
+Decisões técnicas: justificativa das escolhas feitas (banco vetorial, estratégia de chunking,
+modelo, etc.)
+6. Infrastructure as Code — BÔNUS 10 pts
+Prover scripts ou templates que provisionem automaticamente a infraestrutura necessária
+Tecnologias aceitas: Bicep (padrão da disciplina), Terraform, Pulumi, AWS CDK, etc.
+O template deve cobrir, no mínimo, os recursos utilizados pela aplicação
+Referência: veja a pasta  infra/  do repositório da disciplina.
+Resumo da Pontuação
+Critério Pontos
+Chunking 25
+Indexação no Banco Vetorial 25
+API de Consulta RAG 25
+Deploy em Nuvem 10
+Documentação de Projeto 15
+Total 100
+Infrastructure as Code (bônus) +10
+Entregáveis
+Todos os entregáveis devem ser submetidos pelo Portal do Aluno até o prazo definido:
+1. Código-fonte — arquivo  .zip  do repositório ou URL pública (GitHub, GitLab, Azure DevOps),
+enviado como anexo ou link no portal
+2. Vídeo demonstrando pelo menos 3 consultas à API em produção (URL em nuvem visível na
+gravação) — pode ser enviado como anexo diretamente no portal ou como link (YouTube,
+Google Drive, OneDrive, etc.)
+Os recursos cloud podem ser removidos após a gravação do vídeo. Não é necessário manter o
+ambiente ativo no prazo de entrega.
+Restrições e Boas Práticas
+Não commitar chaves ou secrets — use  .env ,  local.settings.json  (ignorado no  .gitignore )
+ou Azure Key Vault
+O código deve estar organizado e legível — funções com responsabilidades claras, sem código
+morto excessivo
+Trabalhos idênticos ou plagiados receberão nota zero
+O uso de IA (GitHub Copilot, ChatGPT, etc.) é permitido e encorajado, desde que o aluno
+compreenda e saiba explicar o código entregue
+Recursos e Referências
+Repositório da disciplina:  function_aula2/  (exercícios 01 e 02 como referência principal)
+Azure AI Search — Quickstart Vetorial
+Azure OpenAI — Embeddings
+Azure Functions — Python Developer Guide
+RAG Pattern — Microsoft Learn
+Bicep Documentation
