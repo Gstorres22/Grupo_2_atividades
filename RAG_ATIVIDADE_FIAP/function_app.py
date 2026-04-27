@@ -15,7 +15,7 @@ OPENAI_API_KEY = os.getenv("API_KEY_OPEN_AI")
 
 # Configurações Azure AI Search
 SEARCH_ENDPOINT = os.getenv("AZURE_SEARCH_ENDPOINT", "https://seu-servico-search.search.windows.net")
-SEARCH_KEY = os.getenv("AZURE_SEARCH_KEY", "7yhFojvVZw7s3sRtkOInhJc00RDTmdqNNvhCBY18S4AzSeB4KdpX")
+SEARCH_KEY = os.getenv("AZURE_SEARCH_KEY", "")
 INDEX_NAME = os.getenv("AZURE_SEARCH_INDEX_NAME", "regras-futebol-index")
 
 @app.route(route="query", auth_level=func.AuthLevel.ANONYMOUS, methods=["POST"])
