@@ -11,8 +11,8 @@ from langchain_openai import ChatOpenAI
 from langgraph.graph import StateGraph, START, END
 
 # Set API Keys
-os.environ["OPENAI_API_KEY"] = "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"
-os.environ["BOLSAI_API_KEY"] = "sk_d91c47af31660d0e794ca8a497fccdf5d722346785f37009"
+os.environ["OPENAI_API_KEY"] = ""
+os.environ["BOLSAI_API_KEY"] = ""
 
 nest_asyncio.apply()
 
