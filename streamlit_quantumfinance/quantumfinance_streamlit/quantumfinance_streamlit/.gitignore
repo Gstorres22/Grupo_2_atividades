@@ -1,0 +1,20 @@
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+.env
+.streamlit/secrets.toml
+.idea/
+.vscode/
+.DS_Store
+*.log
+
+# MLflow local backend (gerado pelo treino)
+mlruns/
+
+# Dados grandes (baixar do Kaggle conforme docs)
+data/*.csv
+data/*.zip
+!data/README.md
