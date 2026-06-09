@@ -1,0 +1,11 @@
+# Autenticacao Facial - dependencias
+# Python 3.10+ recomendado. Instale com:  pip install -r requirements.txt
+
+opencv-python>=4.8
+mediapipe>=0.10
+deepface>=0.0.90
+tf-keras            # necessario p/ DeepFace rodar sobre TensorFlow 2.16+
+numpy>=1.23
+scikit-learn>=1.2
+matplotlib>=3.6
+pandas>=1.5

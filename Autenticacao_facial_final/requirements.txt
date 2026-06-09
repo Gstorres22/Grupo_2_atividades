@@ -1,0 +1,7 @@
+opencv-python>=4.8
+mediapipe>=0.10
+deepface>=0.0.90
+tf-keras
+numpy>=1.23
+matplotlib>=3.6
+pandas>=1.5

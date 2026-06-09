@@ -1,0 +1,11 @@
+# Dados biometricos e artefatos gerados em runtime (LGPD: nao versionar)
+data/enrolled/*
+data/embeddings/*
+evidences/*
+!**/.gitkeep
+
+# Checkpoints do Jupyter
+.ipynb_checkpoints/
+
+# Cache de pesos do DeepFace (baixado em ~/.deepface)
+*.h5
