@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">ID Digital FIAP</string>
+
+    <!-- Barra superior -->
+    <string name="toolbar_title">ID Digital FIAP</string>
+    <string name="menu_about">Sobre o app</string>
+    <string name="nav_open">Abrir menu</string>
+    <string name="nav_close">Fechar menu</string>
+
+    <!-- Menu lateral -->
+    <string name="menu_home">Home</string>
+    <string name="menu_id_digital">ID Digital</string>
+
+    <!-- Acoes da tela da carteirinha -->
+    <string name="action_flip">Virar a carteirinha</string>
+    <string name="action_qr">QR Code</string>
+    <string name="action_share">Compartilhar</string>
+    <string name="coming_soon">Disponível em breve</string>
+
+    <!-- Verso da carteirinha -->
+    <string name="label_cpf">CPF:</string>
+    <string name="label_rg">RG:</string>
+    <string name="label_birth">DATA DE NASCIMENTO:</string>
+    <string name="label_rm">RM:</string>
+    <string name="label_validity">VALIDADE:</string>
+
+    <!-- Tela de edicao -->
+    <string name="edit_title">Editar carteirinha</string>
+    <string name="edit_subtitle">As informações ficam salvas apenas neste aparelho.</string>
+    <string name="edit_photo_section">Foto do aluno</string>
+    <string name="edit_choose_photo">Escolher foto</string>
+    <string name="edit_remove_photo">Remover</string>
+    <string name="edit_data_section">Dados da carteirinha</string>
+    <string name="edit_front_section">Frente</string>
+    <string name="edit_back_section">Verso</string>
+    <string name="edit_name">Nome do aluno</string>
+    <string name="edit_course">Nome do curso</string>
+    <string name="edit_cpf">CPF</string>
+    <string name="edit_rg">RG</string>
+    <string name="edit_birth">Data de nascimento</string>
+    <string name="edit_rm">RM</string>
+    <string name="edit_validity">Validade</string>
+    <string name="edit_save">Salvar</string>
+    <string name="edit_saved">Carteirinha atualizada!</string>
+    <string name="edit_photo_error">Não foi possível carregar a foto.</string>
+    <string name="edit_photo_hint">A foto fica em pé, como numa foto 3x4.</string>
+
+    <!-- Valores iniciais (o aluno troca pelo app) -->
+    <string name="default_name">NOME DO ALUNO</string>
+    <string name="default_course">NOME DO CURSO</string>
+    <string name="default_cpf">000.000.000-00</string>
+    <string name="default_rg">00.000.000-0</string>
+    <string name="default_birth">00/00/00</string>
+    <string name="default_rm">000000</string>
+    <string name="default_validity">JAN/00</string>
+
+    <!-- Descricoes de acessibilidade -->
+    <string name="cd_photo">Foto do aluno</string>
+    <string name="cd_logo">Logo FIAP</string>
+
+    <string name="about_message">Clone da carteirinha digital FIAP.\n\nProjeto acadêmico do Grupo 2 — as informações são preenchidas pelo próprio aluno e ficam salvas somente no aparelho.</string>
+    <string name="about_ok">Fechar</string>
+</resources>

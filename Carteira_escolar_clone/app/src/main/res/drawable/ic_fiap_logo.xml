@@ -1,0 +1,60 @@
+<!--
+  Logotipo FIAP redesenhado como vetor a partir da imagem de referencia.
+  O viewport (225 x 60.5) corresponde a caixa exata do logo medido na tela,
+  entao a proporcao larg./alt. e ~3.72:1.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="111dp"
+    android:height="30dp"
+    android:viewportWidth="225"
+    android:viewportHeight="60.5">
+
+    <!-- F: haste vertical + barra superior -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M50,1.75 L1.75,1.75 L1.75,58.5"
+        android:strokeColor="@color/fiap_pink"
+        android:strokeLineCap="butt"
+        android:strokeLineJoin="miter"
+        android:strokeWidth="3.5" />
+    <!-- F: barra do meio, destacada da haste -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M17.8,29.25 L37.8,29.25"
+        android:strokeColor="@color/fiap_pink"
+        android:strokeLineCap="butt"
+        android:strokeWidth="3.5" />
+
+    <!-- I -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M64.9,1.75 L64.9,58.5"
+        android:strokeColor="@color/fiap_pink"
+        android:strokeLineCap="butt"
+        android:strokeWidth="3.5" />
+
+    <!-- A: perna esquerda + apice + inicio da perna direita -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M77.8,58.5 L116.4,1.9 L137.1,32.8"
+        android:strokeColor="@color/fiap_pink"
+        android:strokeLineCap="butt"
+        android:strokeLineJoin="miter"
+        android:strokeWidth="3.5" />
+    <!-- A: trecho final da perna direita, apos a quebra caracteristica -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M143.5,43.5 L152.8,58.5"
+        android:strokeColor="@color/fiap_pink"
+        android:strokeLineCap="butt"
+        android:strokeWidth="3.5" />
+
+    <!-- P: haste + barriga arredondada, com a barra inferior solta da haste -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M166.4,58.5 L166.4,1.75 L205,1.75 A16.075,16.075 0 0 1 205,33.9 L184.3,33.9"
+        android:strokeColor="@color/fiap_pink"
+        android:strokeLineCap="butt"
+        android:strokeLineJoin="miter"
+        android:strokeWidth="3.5" />
+</vector>

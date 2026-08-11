@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Identidade FIAP -->
+    <color name="fiap_pink">#FFED145B</color>
+    <color name="fiap_black">#FF000000</color>
+
+    <!-- Telas -->
+    <color name="screen_bg">#FFFAFAFA</color>
+    <color name="toolbar_icon">#FF111111</color>
+    <color name="photo_placeholder">#FFB0B0B0</color>
+    <color name="photo_placeholder_icon">#FF7E7E7E</color>
+
+    <!-- Menu lateral -->
+    <color name="drawer_bg">#FF000000</color>
+    <color name="drawer_divider">#FF2B2B2B</color>
+    <color name="drawer_item_selected">#FF141414</color>
+    <color name="drawer_text">#FFB5B5B5</color>
+    <color name="drawer_text_active">#FFFFFFFF</color>
+    <color name="drawer_icon">#FF7C7C7C</color>
+
+    <!-- Tela de edicao -->
+    <color name="edit_label">#FF5F5F5F</color>
+    <color name="edit_text">#FF141414</color>
+    <color name="edit_stroke">#FFD9D9D9</color>
+</resources>

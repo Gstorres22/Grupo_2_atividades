@@ -1,0 +1,24 @@
+<!-- Item "Home" do menu lateral: casinha contornada -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="26dp"
+    android:height="26dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- telhado e paredes -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M3.6,10.6 L12,3.9 L20.4,10.6 L20.4,19.4 A0.8,0.8 0 0 1 19.6,20.2 L4.4,20.2 A0.8,0.8 0 0 1 3.6,19.4 Z"
+        android:strokeColor="#FF000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeWidth="1.9" />
+    <!-- porta -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M9.6,20.2 L9.6,14.6 L14.4,14.6 L14.4,20.2"
+        android:strokeColor="#FF000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeWidth="1.9" />
+</vector>

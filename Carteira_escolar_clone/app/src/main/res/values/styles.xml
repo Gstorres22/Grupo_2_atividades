@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+      Assim como na frente, o verso usa dp em vez de sp: a carteirinha e um
+      desenho de proporcao fixa e nao deve mudar com o tamanho de fonte do sistema.
+    -->
+
+    <!-- Rotulo em negrito das linhas do verso (ex.: "CPF:") -->
+    <style name="CardBackLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">0.07</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/fiap_pink</item>
+        <item name="android:textSize">13dp</item>
+    </style>
+
+    <!-- Valor preenchido pelo aluno, em peso mais leve -->
+    <style name="CardBackValue">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">4dp</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">0.07</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/fiap_pink</item>
+        <item name="android:textSize">13dp</item>
+    </style>
+
+    <!-- Botao redondo da barra de acoes (girar / QR / compartilhar) -->
+    <style name="CardActionButton">
+        <item name="android:layout_width">@dimen/action_icon_size</item>
+        <item name="android:layout_height">@dimen/action_icon_size</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+</resources>

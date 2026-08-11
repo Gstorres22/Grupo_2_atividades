@@ -1,0 +1,16 @@
+<resources>
+    <!--
+      Medidas do "palco" da carteirinha.
+      O cartao e desenhado deitado (534 x 306 dp) e a CardStageLayout gira 90 graus
+      e escala para caber na tela, mantendo as proporcoes das telas de referencia.
+    -->
+    <dimen name="card_design_width">534dp</dimen>
+    <dimen name="card_design_height">306dp</dimen>
+
+    <!-- Margens da tela da carteirinha (a largura final e proporcional, ver CardStageLayout) -->
+    <dimen name="stage_padding_horizontal">12dp</dimen>
+    <dimen name="stage_padding_vertical">24dp</dimen>
+    <dimen name="action_row_padding_horizontal">20dp</dimen>
+    <dimen name="action_row_margin_top">14dp</dimen>
+    <dimen name="action_icon_size">44dp</dimen>
+</resources>

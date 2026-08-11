@@ -1,0 +1,37 @@
+<!-- Botao de girar a carteirinha: dois arcos com setas em volta de um "cartao" -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="@color/toolbar_icon">
+
+    <!-- arco de cima (10h -> 3h, no sentido horario) -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M5.33,8.15 A7.7,7.7 0 0 1 19.53,10.4"
+        android:strokeColor="#FF000000"
+        android:strokeLineCap="butt"
+        android:strokeWidth="1.9" />
+    <!-- seta apontando para baixo, no fim do arco de cima -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M17.13,10.4 L21.93,10.4 L19.53,14.2 Z" />
+
+    <!-- arco de baixo (4h -> 9h, no sentido horario) -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M18.67,15.85 A7.7,7.7 0 0 1 4.42,13.34"
+        android:strokeColor="#FF000000"
+        android:strokeLineCap="butt"
+        android:strokeWidth="1.9" />
+    <!-- seta apontando para cima, no fim do arco de baixo -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M6.82,13.34 L2.02,13.34 L4.42,9.54 Z" />
+
+    <!-- cartao no centro -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M10.15,9.72 L13.85,9.72 A1.1,1.1 0 0 1 14.95,10.82 L14.95,13.17 A1.1,1.1 0 0 1 13.85,14.27 L10.15,14.27 A1.1,1.1 0 0 1 9.05,13.17 L9.05,10.82 A1.1,1.1 0 0 1 10.15,9.72 Z" />
+</vector>

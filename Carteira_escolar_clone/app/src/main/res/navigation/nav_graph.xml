@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/cardFragment">
+
+    <!-- Tela inicial: a carteirinha (frente e verso) -->
+    <fragment
+        android:id="@+id/cardFragment"
+        android:name="com.example.clone_carterinha_digital.ui.CardFragment"
+        android:label="@string/toolbar_title"
+        tools:layout="@layout/fragment_card" />
+
+    <!-- Tela "ID Digital": onde o aluno edita os dados e a foto -->
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="com.example.clone_carterinha_digital.ui.EditFragment"
+        android:label="@string/toolbar_title"
+        tools:layout="@layout/fragment_edit" />
+</navigation>

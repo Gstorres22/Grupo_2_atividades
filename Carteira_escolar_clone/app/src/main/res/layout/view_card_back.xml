@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  VERSO da carteirinha, tambem deitado (534 x 306 dp).
+  Logo a esquerda, linha vertical rosa e a coluna de dados a direita.
+  Cada linha tem altura fixa de 19dp para manter o mesmo ritmo da referencia.
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/card_design_width"
+    android:layout_height="@dimen/card_design_height"
+    android:background="@drawable/bg_card">
+
+    <ImageView
+        android:id="@+id/img_logo_back"
+        android:layout_width="110dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="137dp"
+        android:contentDescription="@string/cd_logo"
+        android:scaleType="fitStart"
+        android:src="@drawable/ic_fiap_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="1.5dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="238dp"
+        android:layout_marginTop="106dp"
+        android:background="@color/fiap_pink"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="112dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- CPF -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/CardBackLabel"
+                android:text="@string/label_cpf" />
+
+            <TextView
+                android:id="@+id/tv_cpf"
+                style="@style/CardBackValue"
+                tools:text="512.314.088-39" />
+        </LinearLayout>
+
+        <!-- RG -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/CardBackLabel"
+                android:text="@string/label_rg" />
+
+            <TextView
+                android:id="@+id/tv_rg"
+                style="@style/CardBackValue"
+                tools:text="53.357.020-7" />
+        </LinearLayout>
+
+        <!-- Data de nascimento -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/CardBackLabel"
+                android:text="@string/label_birth" />
+
+            <TextView
+                android:id="@+id/tv_birth"
+                style="@style/CardBackValue"
+                tools:text="15/12/02" />
+        </LinearLayout>
+
+        <!-- RM (com o espaco em branco da referencia acima) -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/CardBackLabel"
+                android:text="@string/label_rm" />
+
+            <TextView
+                android:id="@+id/tv_rm"
+                style="@style/CardBackValue"
+                tools:text="360332" />
+        </LinearLayout>
+
+        <!-- Validade -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/CardBackLabel"
+                android:text="@string/label_validity" />
+
+            <TextView
+                android:id="@+id/tv_validity"
+                style="@style/CardBackValue"
+                tools:text="JUN/27" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

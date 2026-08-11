@@ -1,0 +1,26 @@
+<!--
+  Fundo de cada item do menu lateral: linha divisoria embaixo (como na referencia)
+  e um leve realce quando o item esta selecionado.
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true">
+        <layer-list>
+            <item>
+                <color android:color="@color/drawer_item_selected" />
+            </item>
+            <item android:gravity="bottom" android:height="1dp">
+                <color android:color="@color/drawer_divider" />
+            </item>
+        </layer-list>
+    </item>
+    <item>
+        <layer-list>
+            <item>
+                <color android:color="@android:color/transparent" />
+            </item>
+            <item android:gravity="bottom" android:height="1dp">
+                <color android:color="@color/drawer_divider" />
+            </item>
+        </layer-list>
+    </item>
+</selector>

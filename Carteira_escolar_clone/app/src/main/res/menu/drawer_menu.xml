@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Menu lateral. Os ids sao os mesmos dos destinos do nav_graph, assim o
+  NavigationUI cuida sozinho da navegacao e de marcar o item ativo.
+-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/cardFragment"
+            android:icon="@drawable/ic_nav_home"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/editFragment"
+            android:icon="@drawable/ic_nav_id"
+            android:title="@string/menu_id_digital" />
+    </group>
+</menu>

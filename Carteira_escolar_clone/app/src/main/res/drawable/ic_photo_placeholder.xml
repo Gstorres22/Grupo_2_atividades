@@ -1,0 +1,17 @@
+<!-- Silhueta mostrada enquanto o aluno nao escolheu uma foto -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="@color/photo_placeholder_icon">
+
+    <!-- cabeca -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M12,11.2 m-4.3,0 a4.3,4.3 0 1,0 8.6,0 a4.3,4.3 0 1,0 -8.6,0" />
+    <!-- ombros -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M12,16.1 C7.6,16.1 4.1,18.9 4.1,22.3 L4.1,23 L19.9,23 L19.9,22.3 C19.9,18.9 16.4,16.1 12,16.1 Z" />
+</vector>

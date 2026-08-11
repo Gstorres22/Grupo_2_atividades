@@ -1,0 +1,11 @@
+<resources>
+    <!--
+      Barras do sistema transparentes: a Activity trata os insets e pinta a area da
+      barra de status de preto, junto com a toolbar.
+    -->
+    <style name="Theme.Clone_carterinha_digital" parent="Base.Theme.Clone_carterinha_digital">
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

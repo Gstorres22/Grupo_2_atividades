@@ -1,0 +1,70 @@
+<!--
+  Botao de QR Code (decorativo), copiado da imagem de referencia:
+  4 cantos em "L" + 3 blocos com furo + um par de blocos no canto inferior direito.
+  Os blocos ficam com folga de ~1.2 unidades dos cantos, para nada se encostar.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="@color/toolbar_icon">
+
+    <!-- cantos em "L" -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M2.6,8.2 L2.6,4.3 A1.7,1.7 0 0 1 4.3,2.6 L8.2,2.6"
+        android:strokeColor="#FF000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeWidth="1.6" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M15.8,2.6 L19.7,2.6 A1.7,1.7 0 0 1 21.4,4.3 L21.4,8.2"
+        android:strokeColor="#FF000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeWidth="1.6" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M2.6,15.8 L2.6,19.7 A1.7,1.7 0 0 0 4.3,21.4 L8.2,21.4"
+        android:strokeColor="#FF000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeWidth="1.6" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M15.8,21.4 L19.7,21.4 A1.7,1.7 0 0 0 21.4,19.7 L21.4,15.8"
+        android:strokeColor="#FF000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeWidth="1.6" />
+
+    <!-- bloco superior esquerdo -->
+    <path
+        android:fillColor="#FF000000"
+        android:fillType="evenOdd"
+        android:pathData="M6.5,4.7 L9.5,4.7 A1.8,1.8 0 0 1 11.3,6.5 L11.3,9.5 A1.8,1.8 0 0 1 9.5,11.3 L6.5,11.3 A1.8,1.8 0 0 1 4.7,9.5 L4.7,6.5 A1.8,1.8 0 0 1 6.5,4.7 Z M7.15,7.15 L8.85,7.15 L8.85,8.85 L7.15,8.85 Z" />
+
+    <!-- bloco superior direito -->
+    <path
+        android:fillColor="#FF000000"
+        android:fillType="evenOdd"
+        android:pathData="M14.5,4.7 L17.5,4.7 A1.8,1.8 0 0 1 19.3,6.5 L19.3,9.5 A1.8,1.8 0 0 1 17.5,11.3 L14.5,11.3 A1.8,1.8 0 0 1 12.7,9.5 L12.7,6.5 A1.8,1.8 0 0 1 14.5,4.7 Z M15.15,7.15 L16.85,7.15 L16.85,8.85 L15.15,8.85 Z" />
+
+    <!-- bloco inferior esquerdo -->
+    <path
+        android:fillColor="#FF000000"
+        android:fillType="evenOdd"
+        android:pathData="M6.5,12.7 L9.5,12.7 A1.8,1.8 0 0 1 11.3,14.5 L11.3,17.5 A1.8,1.8 0 0 1 9.5,19.3 L6.5,19.3 A1.8,1.8 0 0 1 4.7,17.5 L4.7,14.5 A1.8,1.8 0 0 1 6.5,12.7 Z M7.15,15.15 L8.85,15.15 L8.85,16.85 L7.15,16.85 Z" />
+
+    <!-- canto inferior direito: bloco maior cheio... -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M14.1,12.7 L16.0,12.7 A1.4,1.4 0 0 1 17.4,14.1 L17.4,16.0 A1.4,1.4 0 0 1 16.0,17.4 L14.1,17.4 A1.4,1.4 0 0 1 12.7,16.0 L12.7,14.1 A1.4,1.4 0 0 1 14.1,12.7 Z" />
+    <!-- ...e um bloquinho com furo encostado nele -->
+    <path
+        android:fillColor="#FF000000"
+        android:fillType="evenOdd"
+        android:pathData="M17.75,16.8 L18.75,16.8 A0.95,0.95 0 0 1 19.7,17.75 L19.7,18.75 A0.95,0.95 0 0 1 18.75,19.7 L17.75,19.7 A0.95,0.95 0 0 1 16.8,18.75 L16.8,17.75 A0.95,0.95 0 0 1 17.75,16.8 Z M17.75,17.75 L18.75,17.75 L18.75,18.75 L17.75,18.75 Z" />
+</vector>

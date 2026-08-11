@@ -1,0 +1,21 @@
+*.iml
+.gradle
+/local.properties
+# Configuracoes locais do Android Studio: nao fazem parte do projeto
+/.idea/
+/.idea/caches
+
+# Prints da carteirinha real usados como referencia de layout.
+# Ficam so na maquina: contem dados pessoais (CPF, RG, nascimento, RM e foto).
+/Imagens_tela_para_seguir/
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  FRENTE da carteirinha, desenhada deitada (534 x 306 dp).
+  Quem gira 90 graus e escala para caber na tela e a CardStageLayout.
+  Todas as medidas vieram da imagem de referencia Frente_carterinha.jpeg.
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/card_design_width"
+    android:layout_height="@dimen/card_design_height"
+    android:background="@drawable/bg_card">
+
+    <!-- Foto do aluno -->
+    <ImageView
+        android:id="@+id/img_photo"
+        android:layout_width="131dp"
+        android:layout_height="153dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="74dp"
+        android:background="@drawable/bg_photo"
+        android:contentDescription="@string/cd_photo"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_photo_placeholder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Logo FIAP -->
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="193dp"
+        android:layout_marginTop="86dp"
+        android:contentDescription="@string/cd_logo"
+        android:scaleType="fitStart"
+        android:src="@drawable/ic_fiap_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--
+      Os textos da carteirinha usam dp (e nao sp) de proposito: o cartao tem
+      proporcoes fixas, como uma imagem. Assim ele fica identico mesmo em
+      aparelhos com o tamanho de fonte do sistema alterado.
+    -->
+
+    <!-- Nome do aluno -->
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="193dp"
+        android:layout_marginTop="15dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/poppins_bold"
+        android:includeFontPadding="false"
+        android:letterSpacing="0.075"
+        android:lineSpacingMultiplier="0.85"
+        android:maxLines="2"
+        android:textAllCaps="true"
+        android:textColor="@color/fiap_pink"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_logo"
+        tools:ignore="SpUsage"
+        tools:text="GABRIEL DA SILVA TORRES" />
+
+    <!-- Nome do curso -->
+    <TextView
+        android:id="@+id/tv_course"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="193dp"
+        android:layout_marginTop="6dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/poppins_bold"
+        android:includeFontPadding="false"
+        android:letterSpacing="0.07"
+        android:lineSpacingMultiplier="0.72"
+        android:maxLines="3"
+        android:textAllCaps="true"
+        android:textColor="@color/fiap_pink"
+        android:textSize="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_name"
+        tools:ignore="SpUsage"
+        tools:text="MBA EM DATA SCIENCE &amp; ARTIFICIAL INTELLIGENCE" />
+</androidx.constraintlayout.widget.ConstraintLayout>

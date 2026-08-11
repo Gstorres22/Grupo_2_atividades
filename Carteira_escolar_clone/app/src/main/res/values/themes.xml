@@ -1,0 +1,65 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Tema base do app. Fixo em claro para ficar igual as telas de referencia. -->
+    <style name="Base.Theme.Clone_carterinha_digital" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/fiap_pink</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/fiap_pink</item>
+        <item name="colorOnPrimaryContainer">@color/white</item>
+        <item name="colorSecondary">@color/fiap_pink</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/edit_text</item>
+        <item name="android:colorBackground">@color/screen_bg</item>
+        <item name="android:windowBackground">@color/screen_bg</item>
+
+        <!-- Icone "hamburguer" rosa, igual a referencia -->
+        <item name="drawerArrowStyle">@style/Fiap.DrawerArrow</item>
+
+        <!-- Icones da barra de status sempre claros (barra preta) -->
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+    </style>
+
+    <style name="Theme.Clone_carterinha_digital" parent="Base.Theme.Clone_carterinha_digital" />
+
+    <style name="Fiap.DrawerArrow" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/fiap_pink</item>
+        <item name="thickness">2.5dp</item>
+        <item name="barLength">25dp</item>
+        <item name="gapBetweenBars">3.5dp</item>
+        <item name="spinBars">false</item>
+        <item name="drawableSize">28dp</item>
+    </style>
+
+    <!-- Titulo branco e centralizado na toolbar preta -->
+    <style name="Fiap.ToolbarTitle" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- Texto dos itens do menu lateral -->
+    <style name="Fiap.DrawerItemText" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- Titulos de secao da tela de edicao -->
+    <style name="Fiap.SectionTitle" parent="TextAppearance.Material3.TitleSmall">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/fiap_pink</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.08</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <!-- Campos de texto da tela de edicao -->
+    <style name="Fiap.TextField" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/fiap_pink</item>
+        <item name="hintTextColor">@color/fiap_pink</item>
+        <item name="android:textColorHint">@color/edit_label</item>
+        <item name="boxCornerRadiusTopStart">10dp</item>
+        <item name="boxCornerRadiusTopEnd">10dp</item>
+        <item name="boxCornerRadiusBottomStart">10dp</item>
+        <item name="boxCornerRadiusBottomEnd">10dp</item>
+    </style>
+</resources>
