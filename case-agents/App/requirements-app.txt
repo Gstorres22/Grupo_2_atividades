@@ -1,0 +1,24 @@
+# Dependencias da CAMADA DE APLICACAO (App/).
+#
+# Proposito da separacao: o `requirements.txt` da raiz do case fica INTOCADO,
+# com apenas numpy/pandas/scikit-learn/pytest. Quem for avaliar o case roda
+# `pip install -r requirements.txt` e o nucleo funciona — sem baixar LangGraph,
+# sem chave de API, sem rede. Estas dependencias sao opcionais e so fazem falta
+# para a orquestracao, os embeddings e a avaliacao com LLM.
+#
+# Instalacao:  pip install -r App/requirements-app.txt
+
+# Orquestracao do fluxo como grafo de estado
+langgraph>=0.2.0
+langchain-core>=0.3.0
+langchain-openai>=0.2.0
+
+# Cliente OpenAI (embeddings, escalonamento e judge)
+openai>=1.40.0
+
+# Leitura do .env
+python-dotenv>=1.0.0
+
+# Graficos dos notebooks de avaliacao
+matplotlib>=3.8
+jupyter>=1.0
