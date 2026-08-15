@@ -1,0 +1,3040 @@
+{
+  "V1 (ML classico)": {
+    "modelo": "scikit-learn (local)",
+    "oficial": {
+      "n": 30,
+      "acuracia_rota": 1.0,
+      "precision_at_k": 0.75,
+      "n_com_tool": 20,
+      "custo_total_usd": 0.200035,
+      "custo_por_mensagem_usd": 0.006667833333333333,
+      "latencia_p50_ms": 376.8024500022875,
+      "latencia_p95_ms": 535.5331000027945,
+      "tokens_entrada": 0,
+      "tokens_saida": 0,
+      "tokens_raciocinio": 0,
+      "tokens_cacheados": 0,
+      "chamadas_llm": 0,
+      "erros": 0,
+      "linhas": [
+        {
+          "query": "Qual o valor da minha fatura desse mês?",
+          "route": "AGENT",
+          "tools": [
+            "consultar_fatura",
+            "parcelar_fatura"
+          ],
+          "confidence": 0.7652216735931286,
+          "latency_ms": 1315.8317000052193,
+          "cost_usd": 0.0100015,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> AGENT (conf=0.77)",
+            "busca_local -> ['consultar_fatura', 'parcelar_fatura']"
+          ],
+          "error": null
+        },
+        {
+          "query": "Quero saber meu saldo",
+          "route": "AGENT",
+          "tools": [
+            "consultar_saldo",
+            "consultar_saldo_poupanca"
+          ],
+          "confidence": 0.8430250058211648,
+          "latency_ms": 412.9613999975845,
+          "cost_usd": 0.0100015,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> AGENT (conf=0.84)",
+            "busca_local -> ['consultar_saldo', 'consultar_saldo_poupanca']"
+          ],
+          "error": null
+        },
+        {
+          "query": "Bom dia, qual o horário de atendimento?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.8963191551094076,
+          "latency_ms": 0.941699996474199,
+          "cost_usd": 5e-07,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> FAST_PATH (conf=0.90)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Preciso mudei de casa, como mudo o CEP?",
+          "route": "AGENT",
+          "tools": [
+            "atualizar_cep_entrega",
+            "instrucoes_desbloqueio_cartao_novo"
+          ],
+          "confidence": 0.6723984290781433,
+          "latency_ms": 408.5720000002766,
+          "cost_usd": 0.0100015,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> AGENT (conf=0.67)",
+            "busca_local -> ['atualizar_cep_entrega', 'instrucoes_desbloqueio_cartao_novo']"
+          ],
+          "error": null
+        },
+        {
+          "query": "Quanto eu tenho disponível na conta agora?",
+          "route": "AGENT",
+          "tools": [
+            "consultar_saldo_poupanca",
+            "consultar_valor_disponivel_conta"
+          ],
+          "confidence": 0.6795153257239792,
+          "latency_ms": 377.9503000114346,
+          "cost_usd": 0.0100015,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> AGENT (conf=0.68)",
+            "busca_local -> ['consultar_saldo_poupanca', 'consultar_valor_disponivel_conta']"
+          ],
+          "error": null
+        },
+        {
+          "query": "Fiz uma compra que não reconheço, quero contestar",
+          "route": "AGENT",
+          "tools": [
+            "contestar_compra_desconhecida",
+            "estornar_transacao"
+          ],
+          "confidence": 0.8499532247924251,
+          "latency_ms": 407.9811999981757,
+          "cost_usd": 0.0100015,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> AGENT (conf=0.85)",
+            "busca_local -> ['contestar_compra_desconhecida', 'estornar_transacao']"
+          ],
+          "error": null
+        },
+        {
+          "query": "Cobraram algo errado no meu cartão, quero o dinheiro de volta",
+          "route": "AGENT",
+          "tools": [
+            "consultar_limite_cartao",
+            "solicitar_devolucao_dinheiro_cobranca_errada"
+          ],
+          "confidence": 0.8633901674633829,
+          "latency_ms": 367.3490000073798,
+          "cost_usd": 0.0100015,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> AGENT (conf=0.86)",
+            "busca_local -> ['consultar_limite_cartao', 'solicitar_devolucao_dinheiro_cobranca_errada']"
+          ],
+          "error": null
+        },
+        {
+          "query": "Me envia a linha digitável da fatura",
+          "route": "AGENT",
+          "tools": [
+            "consultar_fatura",
+            "parcelar_fatura"
+          ],
+          "confidence": 0.7462406555686726,
+          "latency_ms": 397.53509999718517,
+          "cost_usd": 0.0100015,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> AGENT (conf=0.75)",
+            "busca_local -> ['consultar_fatura', 'parcelar_fatura']"
+          ],
+          "error": null
+        },
+        {
+          "query": "Qual o limite que ainda tenho no cartão de crédito?",
+          "route": "AGENT",
+          "tools": [
+            "consultar_limite_cartao",
+            "aumentar_limite_cartao"
+          ],
+          "confidence": 0.6852086077969557,
+          "latency_ms": 409.7129000001587,
+          "cost_usd": 0.0100015,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> AGENT (conf=0.69)",
+            "busca_local -> ['consultar_limite_cartao', 'aumentar_limite_cartao']"
+          ],
+          "error": null
+        },
+        {
+          "query": "Posso dividir o pagamento da fatura em parcelas?",
+          "route": "AGENT",
+          "tools": [
+            "parcelar_fatura",
+            "dividir_pagamento_fatura"
+          ],
+          "confidence": 0.6479528393945102,
+          "latency_ms": 375.65459999314044,
+          "cost_usd": 0.0100015,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> AGENT (conf=0.65)",
+            "busca_local -> ['parcelar_fatura', 'dividir_pagamento_fatura']"
+          ],
+          "error": null
+        },
+        {
+          "query": "Quero parcelar minha fatura em 3 vezes",
+          "route": "AGENT",
+          "tools": [
+            "parcelar_fatura",
+            "dividir_pagamento_fatura"
+          ],
+          "confidence": 0.8982753573245005,
+          "latency_ms": 411.70640000200365,
+          "cost_usd": 0.0100015,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> AGENT (conf=0.90)",
+            "busca_local -> ['parcelar_fatura', 'dividir_pagamento_fatura']"
+          ],
+          "error": null
+        },
+        {
+          "query": "Troquei de número, preciso atualizar o telefone cadastrado",
+          "route": "AGENT",
+          "tools": [
+            "alterar_telefone",
+            "atualizar_email"
+          ],
+          "confidence": 0.8350033020869696,
+          "latency_ms": 387.6665999996476,
+          "cost_usd": 0.0100015,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> AGENT (conf=0.84)",
+            "busca_local -> ['alterar_telefone', 'atualizar_email']"
+          ],
+          "error": null
+        },
+        {
+          "query": "Quero mudar o e-mail vinculado à minha conta",
+          "route": "AGENT",
+          "tools": [
+            "atualizar_email",
+            "atualizar_numero_whatsapp"
+          ],
+          "confidence": 0.86249257562846,
+          "latency_ms": 372.0810000086203,
+          "cost_usd": 0.0100015,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> AGENT (conf=0.86)",
+            "busca_local -> ['atualizar_email', 'atualizar_numero_whatsapp']"
+          ],
+          "error": null
+        },
+        {
+          "query": "Perdi meu cartão na rua, preciso bloquear agora",
+          "route": "AGENT",
+          "tools": [
+            "bloquear_cartao",
+            "bloquear_cartao_temporariamente"
+          ],
+          "confidence": 0.8592953185766582,
+          "latency_ms": 535.5331000027945,
+          "cost_usd": 0.0100015,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> AGENT (conf=0.86)",
+            "busca_local -> ['bloquear_cartao', 'bloquear_cartao_temporariamente']"
+          ],
+          "error": null
+        },
+        {
+          "query": "Chegou meu cartão novo, como faço para desbloquear?",
+          "route": "AGENT",
+          "tools": [
+            "desbloquear_cartao",
+            "instrucoes_desbloqueio_cartao_novo"
+          ],
+          "confidence": 0.7460306968294885,
+          "latency_ms": 440.00179998693056,
+          "cost_usd": 0.0100015,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> AGENT (conf=0.75)",
+            "busca_local -> ['desbloquear_cartao', 'instrucoes_desbloqueio_cartao_novo']"
+          ],
+          "error": null
+        },
+        {
+          "query": "Meu cartão parou de funcionar, quero uma segunda via",
+          "route": "AGENT",
+          "tools": [
+            "solicitar_segunda_via_cartao",
+            "rastrear_segunda_via_cartao"
+          ],
+          "confidence": 0.7650682694573384,
+          "latency_ms": 413.4206000017002,
+          "cost_usd": 0.0100015,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> AGENT (conf=0.77)",
+            "busca_local -> ['solicitar_segunda_via_cartao', 'rastrear_segunda_via_cartao']"
+          ],
+          "error": null
+        },
+        {
+          "query": "O aplicativo está travando, quero abrir um chamado",
+          "route": "AGENT",
+          "tools": [
+            "abrir_chamado_travamento_app",
+            "cancelar_chamado_suporte"
+          ],
+          "confidence": 0.6860910339418149,
+          "latency_ms": 364.09989999083336,
+          "cost_usd": 0.0100015,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> AGENT (conf=0.69)",
+            "busca_local -> ['abrir_chamado_travamento_app', 'cancelar_chamado_suporte']"
+          ],
+          "error": null
+        },
+        {
+          "query": "Oi, boa tarde",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.8221700921808612,
+          "latency_ms": 0.6784999859519303,
+          "cost_usd": 5e-07,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> FAST_PATH (conf=0.82)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Qual a taxa de manutenção mensal da conta?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.7826784325020577,
+          "latency_ms": 0.5617999995592982,
+          "cost_usd": 5e-07,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> FAST_PATH (conf=0.78)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Vocês atendem no sábado?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.8192384515383386,
+          "latency_ms": 0.4783000040333718,
+          "cost_usd": 5e-07,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> FAST_PATH (conf=0.82)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Muito obrigado pela ajuda, até logo",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.7817966672979704,
+          "latency_ms": 0.8009000011952594,
+          "cost_usd": 5e-07,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> FAST_PATH (conf=0.78)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Como funciona o programa de cashback de vocês?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.8626763047935175,
+          "latency_ms": 0.592199998209253,
+          "cost_usd": 5e-07,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> FAST_PATH (conf=0.86)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Qual o telefone do SAC?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.6101917739780558,
+          "latency_ms": 0.632499999483116,
+          "cost_usd": 5e-07,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> FAST_PATH (conf=0.61)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Quais documentos preciso para abrir uma conta?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.7254229060833489,
+          "latency_ms": 0.5133999948156998,
+          "cost_usd": 5e-07,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> FAST_PATH (conf=0.73)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Bom dia! Qual o valor mínimo para abrir uma conta?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.7139057322813266,
+          "latency_ms": 0.4847999953199178,
+          "cost_usd": 5e-07,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> FAST_PATH (conf=0.71)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Preciso saber o saldo disponível pra pix",
+          "route": "AGENT",
+          "tools": [
+            "consultar_saldo_poupanca",
+            "consultar_saldo_disponivel_pix"
+          ],
+          "confidence": 0.7334929277105857,
+          "latency_ms": 355.68899998907,
+          "cost_usd": 0.0100015,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> AGENT (conf=0.73)",
+            "busca_local -> ['consultar_saldo_poupanca', 'consultar_saldo_disponivel_pix']"
+          ],
+          "error": null
+        },
+        {
+          "query": "Essa cobrança na fatura não fui eu, quero estornar",
+          "route": "AGENT",
+          "tools": [
+            "estornar_transacao",
+            "contestar_cobranca_duplicada"
+          ],
+          "confidence": 0.8181903712414872,
+          "latency_ms": 403.0914000031771,
+          "cost_usd": 0.0100015,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> AGENT (conf=0.82)",
+            "busca_local -> ['estornar_transacao', 'contestar_cobranca_duplicada']"
+          ],
+          "error": null
+        },
+        {
+          "query": "Manda o pdf da minha fatura atual",
+          "route": "AGENT",
+          "tools": [
+            "consultar_fatura",
+            "reenviar_fatura_email"
+          ],
+          "confidence": 0.8134916000167816,
+          "latency_ms": 395.33479999226984,
+          "cost_usd": 0.0100015,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> AGENT (conf=0.81)",
+            "busca_local -> ['consultar_fatura', 'reenviar_fatura_email']"
+          ],
+          "error": null
+        },
+        {
+          "query": "Mudei de endereço, como atualizo minha entrega?",
+          "route": "AGENT",
+          "tools": [
+            "alterar_endereco",
+            "atualizar_email"
+          ],
+          "confidence": 0.7845489202712626,
+          "latency_ms": 413.98720000870526,
+          "cost_usd": 0.0100015,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> AGENT (conf=0.78)",
+            "busca_local -> ['alterar_endereco', 'atualizar_email']"
+          ],
+          "error": null
+        },
+        {
+          "query": "Vocês cobram taxa de manutenção de conta?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.8643034713486197,
+          "latency_ms": 0.754000007873401,
+          "cost_usd": 5e-07,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> FAST_PATH (conf=0.86)"
+          ],
+          "error": null
+        }
+      ]
+    },
+    "criticos": {
+      "n": 6,
+      "acuracia_rota": 0.5,
+      "precision_at_k": 0.0,
+      "n_com_tool": 5,
+      "custo_total_usd": 0.020005,
+      "custo_por_mensagem_usd": 0.0033341666666666663,
+      "latencia_p50_ms": 0.5311999993864447,
+      "latencia_p95_ms": 2.444500001729466,
+      "tokens_entrada": 0,
+      "tokens_saida": 0,
+      "tokens_raciocinio": 0,
+      "tokens_cacheados": 0,
+      "chamadas_llm": 0,
+      "erros": 0,
+      "linhas": [
+        {
+          "query": "quero bloquear meu cartao",
+          "route": "AGENT",
+          "tools": [
+            "desbloquear_cartao",
+            "bloquear_cartao_temporariamente"
+          ],
+          "confidence": 0.908434563878793,
+          "latency_ms": 2.259900007629767,
+          "cost_usd": 0.0100015,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> AGENT (conf=0.91)",
+            "busca_local -> ['desbloquear_cartao', 'bloquear_cartao_temporariamente']"
+          ],
+          "error": null
+        },
+        {
+          "query": "qero blqouear meu cartaao",
+          "route": "AGENT",
+          "tools": [
+            "desbloquear_cartao",
+            "aumentar_limite_cartao"
+          ],
+          "confidence": 0.8804416348027264,
+          "latency_ms": 2.444500001729466,
+          "cost_usd": 0.0100015,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> AGENT (conf=0.88)",
+            "busca_local -> ['desbloquear_cartao', 'aumentar_limite_cartao']"
+          ],
+          "error": null
+        },
+        {
+          "query": "solicito a emissao do informe de rendimentos para o IRPF",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.7615829672751281,
+          "latency_ms": 0.5631000094581395,
+          "cost_usd": 5e-07,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> FAST_PATH (conf=0.76)"
+          ],
+          "error": null
+        },
+        {
+          "query": "oi, preciso de ajuda com o meu saldo",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.5335746496326372,
+          "latency_ms": 0.49929998931474984,
+          "cost_usd": 5e-07,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> FAST_PATH (conf=0.53)"
+          ],
+          "error": null
+        },
+        {
+          "query": "precido do extrado bnacario",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.5060532133816111,
+          "latency_ms": 0.47559999802615494,
+          "cost_usd": 5e-07,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> FAST_PATH (conf=0.51)"
+          ],
+          "error": null
+        },
+        {
+          "query": "bom dia, qual o horario de atendimento?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.8788905119358039,
+          "latency_ms": 0.4803999909199774,
+          "cost_usd": 5e-07,
+          "llm_calls": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "router_local -> FAST_PATH (conf=0.88)"
+          ],
+          "error": null
+        }
+      ]
+    },
+    "fallbacks": 0
+  },
+  "V1.0.1 / gpt-4o-mini": {
+    "modelo": "gpt-4o-mini",
+    "reasoning_effort": "none",
+    "oficial": {
+      "n": 30,
+      "acuracia_rota": 1.0,
+      "precision_at_k": 0.65,
+      "n_com_tool": 20,
+      "custo_total_usd": 0.20611355,
+      "custo_por_mensagem_usd": 0.006870451666666667,
+      "latencia_p50_ms": 1424.515099999553,
+      "latencia_p95_ms": 2598.6439999978757,
+      "tokens_entrada": 33793,
+      "tokens_saida": 1666,
+      "tokens_raciocinio": 0,
+      "tokens_cacheados": 0,
+      "chamadas_llm": 30,
+      "erros": 0,
+      "linhas": [
+        {
+          "query": "Qual o valor da minha fatura desse mês?",
+          "route": "AGENT",
+          "tools": [
+            "consultar_valor_fatura_mes_atual",
+            "consultar_valor_total_fatura"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 1702.6350000087405,
+          "cost_usd": 0.01020925,
+          "llm_calls": 1,
+          "prompt_tokens": 1165,
+          "completion_tokens": 55,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_valor_fatura_mes_atual', 'consultar_valor_total_fatura'] (motivo: O cliente pediu o valor da fatura do mês atual.)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Quero saber meu saldo",
+          "route": "AGENT",
+          "tools": [
+            "consultar_saldo",
+            "informar_saldo_atual_conta"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 1753.738900006283,
+          "cost_usd": 0.0102079,
+          "llm_calls": 1,
+          "prompt_tokens": 1112,
+          "completion_tokens": 66,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_saldo', 'informar_saldo_atual_conta'] (motivo: O cliente pediu para saber o saldo, o que requer acesso a da)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Bom dia, qual o horário de atendimento?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 1.0,
+          "latency_ms": 1622.722000000067,
+          "cost_usd": 0.00018959999999999997,
+          "llm_calls": 1,
+          "prompt_tokens": 1094,
+          "completion_tokens": 40,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: A pergunta é sobre horário de atendimento, que não depende d)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Preciso mudei de casa, como mudo o CEP?",
+          "route": "AGENT",
+          "tools": [
+            "processar_mudanca_endereco_atualizar_entrega",
+            "alterar_endereco"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 1124.5834000001196,
+          "cost_usd": 0.01020985,
+          "llm_calls": 1,
+          "prompt_tokens": 1161,
+          "completion_tokens": 57,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['processar_mudanca_endereco_atualizar_entrega', 'alterar_endereco'] (motivo: O cliente deseja mudar o CEP, o que requer atualização de en)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Quanto eu tenho disponível na conta agora?",
+          "route": "AGENT",
+          "tools": [
+            "consultar_valor_disponivel_conta",
+            "informar_saldo_atual_conta"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 2000.7113000028767,
+          "cost_usd": 0.0102067,
+          "llm_calls": 1,
+          "prompt_tokens": 1104,
+          "completion_tokens": 66,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_valor_disponivel_conta', 'informar_saldo_atual_conta'] (motivo: O cliente pediu informações sobre o saldo disponível na cont)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Fiz uma compra que não reconheço, quero contestar",
+          "route": "AGENT",
+          "tools": [
+            "contestar_compra_desconhecida",
+            "contestar_compra_cartao"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 2598.6439999978757,
+          "cost_usd": 0.01021975,
+          "llm_calls": 1,
+          "prompt_tokens": 1155,
+          "completion_tokens": 75,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['contestar_compra_desconhecida', 'contestar_compra_cartao'] (motivo: O cliente deseja contestar uma compra não reconhecida, o que)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Cobraram algo errado no meu cartão, quero o dinheiro de volta",
+          "route": "AGENT",
+          "tools": [
+            "solicitar_devolucao_dinheiro_cobranca_errada",
+            "reclamar_cobranca_errada_cartao_dinheiro_volta"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 1661.574700003257,
+          "cost_usd": 0.0102199,
+          "llm_calls": 1,
+          "prompt_tokens": 1164,
+          "completion_tokens": 73,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['solicitar_devolucao_dinheiro_cobranca_errada', 'reclamar_cobranca_errada_cartao_dinheiro_volta'] (motivo: O cliente solicita a devolução de um valor cobrado indevidam)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Me envia a linha digitável da fatura",
+          "route": "AGENT",
+          "tools": [
+            "gerar_linha_digitavel_fatura",
+            "enviar_boleto_fatura_email"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 1230.3589999937685,
+          "cost_usd": 0.01021405,
+          "llm_calls": 1,
+          "prompt_tokens": 1161,
+          "completion_tokens": 64,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['gerar_linha_digitavel_fatura', 'enviar_boleto_fatura_email'] (motivo: O cliente pediu a linha digitável da fatura, que pode ser ge)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Qual o limite que ainda tenho no cartão de crédito?",
+          "route": "AGENT",
+          "tools": [
+            "consultar_limite_cartao",
+            "consultar_limite_disponivel_credito"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 1590.9830999880796,
+          "cost_usd": 0.01021045,
+          "llm_calls": 1,
+          "prompt_tokens": 1125,
+          "completion_tokens": 67,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_limite_cartao', 'consultar_limite_disponivel_credito'] (motivo: O cliente pediu informações sobre o limite do cartão de créd)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Posso dividir o pagamento da fatura em parcelas?",
+          "route": "AGENT",
+          "tools": [
+            "parcelar_fatura",
+            "dividir_pagamento_fatura"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 2376.3633000053233,
+          "cost_usd": 0.0102232,
+          "llm_calls": 1,
+          "prompt_tokens": 1130,
+          "completion_tokens": 87,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['parcelar_fatura', 'dividir_pagamento_fatura'] (motivo: O cliente deseja saber sobre a possibilidade de parcelar a f)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Quero parcelar minha fatura em 3 vezes",
+          "route": "AGENT",
+          "tools": [
+            "parcelar_fatura_numero_vezes_escolhido",
+            "parcelar_fatura"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 3732.4109000037424,
+          "cost_usd": 0.0102256,
+          "llm_calls": 1,
+          "prompt_tokens": 1174,
+          "completion_tokens": 80,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['parcelar_fatura_numero_vezes_escolhido', 'parcelar_fatura'] (motivo: O cliente deseja parcelar a fatura em 3 vezes, o que requer )"
+          ],
+          "error": null
+        },
+        {
+          "query": "Troquei de número, preciso atualizar o telefone cadastrado",
+          "route": "AGENT",
+          "tools": [
+            "alterar_telefone",
+            "trocar_numero_telefone_cadastro"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 1246.956400005729,
+          "cost_usd": 0.010205800000000001,
+          "llm_calls": 1,
+          "prompt_tokens": 1110,
+          "completion_tokens": 63,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['alterar_telefone', 'trocar_numero_telefone_cadastro'] (motivo: O cliente precisa atualizar o telefone cadastrado.)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Quero mudar o e-mail vinculado à minha conta",
+          "route": "AGENT",
+          "tools": [
+            "atualizar_email",
+            "atualizar_numero_whatsapp"
+          ],
+          "confidence": 1.0,
+          "latency_ms": 1127.8468999953475,
+          "cost_usd": 0.010194400000000001,
+          "llm_calls": 1,
+          "prompt_tokens": 1098,
+          "completion_tokens": 47,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['atualizar_email', 'atualizar_numero_whatsapp'] (motivo: O cliente deseja mudar o e-mail vinculado à conta, o que req)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Perdi meu cartão na rua, preciso bloquear agora",
+          "route": "AGENT",
+          "tools": [
+            "bloquear_cartao",
+            "reportar_perda_cartao"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 1654.8070999997435,
+          "cost_usd": 0.0102034,
+          "llm_calls": 1,
+          "prompt_tokens": 1158,
+          "completion_tokens": 47,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['bloquear_cartao', 'reportar_perda_cartao'] (motivo: O cliente precisa bloquear o cartão devido à perda.)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Chegou meu cartão novo, como faço para desbloquear?",
+          "route": "AGENT",
+          "tools": [
+            "desbloquear_cartao",
+            "ativar_cartao_novo"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 1121.9424000009894,
+          "cost_usd": 0.01020595,
+          "llm_calls": 1,
+          "prompt_tokens": 1143,
+          "completion_tokens": 55,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['desbloquear_cartao', 'ativar_cartao_novo'] (motivo: O cliente pediu para desbloquear um cartão novo, que é uma a)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Meu cartão parou de funcionar, quero uma segunda via",
+          "route": "AGENT",
+          "tools": [
+            "emitir_segunda_via_cartao_parou_funcionar",
+            "solicitar_segunda_via_cartao"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 1406.4731999969808,
+          "cost_usd": 0.0102118,
+          "llm_calls": 1,
+          "prompt_tokens": 1154,
+          "completion_tokens": 62,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['emitir_segunda_via_cartao_parou_funcionar', 'solicitar_segunda_via_cartao'] (motivo: O cliente deseja uma segunda via do cartão que parou de func)"
+          ],
+          "error": null
+        },
+        {
+          "query": "O aplicativo está travando, quero abrir um chamado",
+          "route": "AGENT",
+          "tools": [
+            "abrir_chamado_travamento_app",
+            "abrir_chamado_suporte_app_travando"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 1439.8054999910528,
+          "cost_usd": 0.0102082,
+          "llm_calls": 1,
+          "prompt_tokens": 1130,
+          "completion_tokens": 62,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['abrir_chamado_travamento_app', 'abrir_chamado_suporte_app_travando'] (motivo: O cliente deseja abrir um chamado específico para o travamen)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Oi, boa tarde",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 1.0,
+          "latency_ms": 1606.3816999958362,
+          "cost_usd": 0.0001836,
+          "llm_calls": 1,
+          "prompt_tokens": 1086,
+          "completion_tokens": 32,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: A mensagem é apenas uma saudação.)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Qual a taxa de manutenção mensal da conta?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.9,
+          "latency_ms": 1407.4416999937966,
+          "cost_usd": 0.00018885,
+          "llm_calls": 1,
+          "prompt_tokens": 1093,
+          "completion_tokens": 39,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: A pergunta é sobre uma taxa de manutenção, que é uma informa)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Vocês atendem no sábado?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.9,
+          "latency_ms": 1597.9598999983864,
+          "cost_usd": 0.0001839,
+          "llm_calls": 1,
+          "prompt_tokens": 1068,
+          "completion_tokens": 37,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: Pergunta sobre horário de atendimento não depende de dados d)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Muito obrigado pela ajuda, até logo",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 1.0,
+          "latency_ms": 1351.2328000069829,
+          "cost_usd": 0.00019365,
+          "llm_calls": 1,
+          "prompt_tokens": 1125,
+          "completion_tokens": 39,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: A mensagem é uma despedida e agradecimento, sem pedidos acio)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Como funciona o programa de cashback de vocês?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.9,
+          "latency_ms": 1310.798699996667,
+          "cost_usd": 0.00019874999999999998,
+          "llm_calls": 1,
+          "prompt_tokens": 1151,
+          "completion_tokens": 41,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: A pergunta é sobre como funciona o programa de cashback, que)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Qual o telefone do SAC?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 1.0,
+          "latency_ms": 1208.3694000029936,
+          "cost_usd": 0.0001863,
+          "llm_calls": 1,
+          "prompt_tokens": 1104,
+          "completion_tokens": 32,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: Pergunta genérica sobre a instituição.)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Quais documentos preciso para abrir uma conta?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.9,
+          "latency_ms": 1752.119800003129,
+          "cost_usd": 0.0001896,
+          "llm_calls": 1,
+          "prompt_tokens": 1102,
+          "completion_tokens": 38,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: A pergunta é sobre documentos necessários, não envolve dados)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Bom dia! Qual o valor mínimo para abrir uma conta?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.9,
+          "latency_ms": 1481.8681999895489,
+          "cost_usd": 0.00019200000000000003,
+          "llm_calls": 1,
+          "prompt_tokens": 1110,
+          "completion_tokens": 40,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: A pergunta é genérica sobre a instituição e não depende de d)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Preciso saber o saldo disponível pra pix",
+          "route": "AGENT",
+          "tools": [
+            "consultar_saldo_disponivel_pix",
+            "consultar_saldo"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 1191.578699988895,
+          "cost_usd": 0.010201,
+          "llm_calls": 1,
+          "prompt_tokens": 1082,
+          "completion_tokens": 62,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_saldo_disponivel_pix', 'consultar_saldo'] (motivo: O cliente pediu o saldo disponível para realizar transferênc)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Essa cobrança na fatura não fui eu, quero estornar",
+          "route": "AGENT",
+          "tools": [
+            "estornar_transacao",
+            "solicitar_devolucao_valor_cobranca"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 1406.6319999983534,
+          "cost_usd": 0.0102223,
+          "llm_calls": 1,
+          "prompt_tokens": 1156,
+          "completion_tokens": 79,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['estornar_transacao', 'solicitar_devolucao_valor_cobranca'] (motivo: O cliente deseja estornar uma cobrança não reconhecida na fa)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Manda o pdf da minha fatura atual",
+          "route": "AGENT",
+          "tools": [
+            "enviar_pdf_fatura_atual",
+            "gerar_pdf_fatura_mes_atual"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 1030.5311999982223,
+          "cost_usd": 0.0102097,
+          "llm_calls": 1,
+          "prompt_tokens": 1164,
+          "completion_tokens": 56,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['enviar_pdf_fatura_atual', 'gerar_pdf_fatura_mes_atual'] (motivo: O cliente pediu explicitamente o envio do PDF da fatura atua)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Mudei de endereço, como atualizo minha entrega?",
+          "route": "AGENT",
+          "tools": [
+            "alterar_endereco",
+            "atualizar_endereco_entrega_encomendas"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 1355.3488000034122,
+          "cost_usd": 0.0102085,
+          "llm_calls": 1,
+          "prompt_tokens": 1124,
+          "completion_tokens": 64,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['alterar_endereco', 'atualizar_endereco_entrega_encomendas'] (motivo: O cliente deseja atualizar o endereço de entrega.)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Vocês cobram taxa de manutenção de conta?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.9,
+          "latency_ms": 1409.2247000080533,
+          "cost_usd": 0.0001896,
+          "llm_calls": 1,
+          "prompt_tokens": 1090,
+          "completion_tokens": 41,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: A pergunta é sobre taxas de manutenção, que não depende de d)"
+          ],
+          "error": null
+        }
+      ]
+    },
+    "criticos": {
+      "n": 6,
+      "acuracia_rota": 1.0,
+      "precision_at_k": 1.0,
+      "n_com_tool": 5,
+      "custo_total_usd": 0.05089355,
+      "custo_por_mensagem_usd": 0.008482258333333334,
+      "latencia_p50_ms": 1037.8078000067035,
+      "latencia_p95_ms": 1206.3468999986071,
+      "tokens_entrada": 6681,
+      "tokens_saida": 316,
+      "tokens_raciocinio": 0,
+      "tokens_cacheados": 4096,
+      "chamadas_llm": 6,
+      "erros": 0,
+      "linhas": [
+        {
+          "query": "quero bloquear meu cartao",
+          "route": "AGENT",
+          "tools": [
+            "bloquear_cartao",
+            "bloquear_cartao_temporariamente"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 1007.99410000036,
+          "cost_usd": 0.01012825,
+          "llm_calls": 1,
+          "prompt_tokens": 1133,
+          "completion_tokens": 56,
+          "reasoning_tokens": 0,
+          "cached_tokens": 1024,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['bloquear_cartao', 'bloquear_cartao_temporariamente'] (motivo: O cliente pediu para bloquear o cartão, o que se refere a aç)"
+          ],
+          "error": null
+        },
+        {
+          "query": "qero blqouear meu cartaao",
+          "route": "AGENT",
+          "tools": [
+            "bloquear_cartao",
+            "bloquear_cartao_temporariamente"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 1037.6511000067694,
+          "cost_usd": 0.01012495,
+          "llm_calls": 1,
+          "prompt_tokens": 1119,
+          "completion_tokens": 54,
+          "reasoning_tokens": 0,
+          "cached_tokens": 1024,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['bloquear_cartao', 'bloquear_cartao_temporariamente'] (motivo: O cliente pediu para bloquear o cartão, o que é uma ação aci)"
+          ],
+          "error": null
+        },
+        {
+          "query": "solicito a emissao do informe de rendimentos para o IRPF",
+          "route": "AGENT",
+          "tools": [
+            "emitir_informe_rendimentos",
+            "solicitar_maquininha_cartao"
+          ],
+          "confidence": 1.0,
+          "latency_ms": 1037.9645000066375,
+          "cost_usd": 0.010123150000000001,
+          "llm_calls": 1,
+          "prompt_tokens": 1119,
+          "completion_tokens": 51,
+          "reasoning_tokens": 0,
+          "cached_tokens": 1024,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['emitir_informe_rendimentos', 'solicitar_maquininha_cartao'] (motivo: O cliente solicitou a emissão do informe de rendimentos, que)"
+          ],
+          "error": null
+        },
+        {
+          "query": "oi, preciso de ajuda com o meu saldo",
+          "route": "AGENT",
+          "tools": [
+            "consultar_saldo",
+            "informar_saldo_atual_conta"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 1206.3468999986071,
+          "cost_usd": 0.010133950000000001,
+          "llm_calls": 1,
+          "prompt_tokens": 1131,
+          "completion_tokens": 66,
+          "reasoning_tokens": 0,
+          "cached_tokens": 1024,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_saldo', 'informar_saldo_atual_conta'] (motivo: O cliente pediu ajuda com o saldo, o que requer acesso a dad)"
+          ],
+          "error": null
+        },
+        {
+          "query": "precido do extrado bnacario",
+          "route": "AGENT",
+          "tools": [
+            "consultar_extrato",
+            "consultar_extrato_inss"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 1086.7447000055108,
+          "cost_usd": 0.01019365,
+          "llm_calls": 1,
+          "prompt_tokens": 1085,
+          "completion_tokens": 49,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_extrato', 'consultar_extrato_inss'] (motivo: O cliente pediu um extrato bancário, que é atendido pela fer)"
+          ],
+          "error": null
+        },
+        {
+          "query": "bom dia, qual o horario de atendimento?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 1.0,
+          "latency_ms": 853.7550999899395,
+          "cost_usd": 0.00018959999999999997,
+          "llm_calls": 1,
+          "prompt_tokens": 1094,
+          "completion_tokens": 40,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: A pergunta é sobre horário de atendimento, que não depende d)"
+          ],
+          "error": null
+        }
+      ]
+    },
+    "fallbacks": 0,
+    "custo_desconhecido": false,
+    "descontinuado_em": null
+  },
+  "V1.0.1 / gpt-5.4-nano": {
+    "modelo": "gpt-5.4-nano",
+    "reasoning_effort": "none",
+    "oficial": {
+      "n": 30,
+      "acuracia_rota": 1.0,
+      "precision_at_k": 0.75,
+      "n_com_tool": 20,
+      "custo_total_usd": 0.20922635,
+      "custo_por_mensagem_usd": 0.0069742116666666664,
+      "latencia_p50_ms": 897.2823500007507,
+      "latencia_p95_ms": 1103.9034999994328,
+      "tokens_entrada": 33763,
+      "tokens_saida": 1943,
+      "tokens_raciocinio": 0,
+      "tokens_cacheados": 0,
+      "chamadas_llm": 30,
+      "erros": 0,
+      "linhas": [
+        {
+          "query": "Qual o valor da minha fatura desse mês?",
+          "route": "AGENT",
+          "tools": [
+            "consultar_valor_total_fatura",
+            "consultar_valor_fatura_mes_atual"
+          ],
+          "confidence": 0.86,
+          "latency_ms": 1103.9034999994328,
+          "cost_usd": 0.01032805,
+          "llm_calls": 1,
+          "prompt_tokens": 1164,
+          "completion_tokens": 75,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_valor_total_fatura', 'consultar_valor_fatura_mes_atual'] (motivo: O cliente quer o valor da fatura do mês atual; as ferramenta)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Quero saber meu saldo",
+          "route": "AGENT",
+          "tools": [
+            "consultar_saldo",
+            "consultar_saldo_poupanca"
+          ],
+          "confidence": 0.78,
+          "latency_ms": 879.5831000024918,
+          "cost_usd": 0.01029995,
+          "llm_calls": 1,
+          "prompt_tokens": 1111,
+          "completion_tokens": 61,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_saldo', 'consultar_saldo_poupanca'] (motivo: O cliente quer saber o saldo; é uma ação que depende da cont)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Bom dia, qual o horário de atendimento?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.88,
+          "latency_ms": 2504.999199998565,
+          "cost_usd": 0.0002751,
+          "llm_calls": 1,
+          "prompt_tokens": 1093,
+          "completion_tokens": 44,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: O cliente perguntou genericamente sobre horário de atendimen)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Preciso mudei de casa, como mudo o CEP?",
+          "route": "AGENT",
+          "tools": [
+            "processar_mudanca_endereco_atualizar_entrega",
+            "atualizar_cep_entrega"
+          ],
+          "confidence": 0.72,
+          "latency_ms": 950.3954000101658,
+          "cost_usd": 0.0103385,
+          "llm_calls": 1,
+          "prompt_tokens": 1160,
+          "completion_tokens": 84,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['processar_mudanca_endereco_atualizar_entrega', 'atualizar_cep_entrega'] (motivo: Cliente quer alterar o CEP por mudança de casa; requer atual)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Quanto eu tenho disponível na conta agora?",
+          "route": "AGENT",
+          "tools": [
+            "consultar_valor_disponivel_conta",
+            "consultar_saldo"
+          ],
+          "confidence": 0.86,
+          "latency_ms": 922.946899998351,
+          "cost_usd": 0.0103021,
+          "llm_calls": 1,
+          "prompt_tokens": 1103,
+          "completion_tokens": 64,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_valor_disponivel_conta', 'consultar_saldo'] (motivo: O cliente quer saber o valor disponível na conta agora; a fo)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Fiz uma compra que não reconheço, quero contestar",
+          "route": "AGENT",
+          "tools": [
+            "contestar_compra_desconhecida",
+            "estornar_transacao"
+          ],
+          "confidence": 0.8499532247924251,
+          "latency_ms": 728.8429999898653,
+          "cost_usd": 0.0102898,
+          "llm_calls": 1,
+          "prompt_tokens": 1154,
+          "completion_tokens": 46,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "resposta do LLM invalida -> plano B (decisao local)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Cobraram algo errado no meu cartão, quero o dinheiro de volta",
+          "route": "AGENT",
+          "tools": [
+            "solicitar_devolucao_dinheiro_cobranca_errada",
+            "estornar_transacao"
+          ],
+          "confidence": 0.78,
+          "latency_ms": 1003.020900010597,
+          "cost_usd": 0.0103391,
+          "llm_calls": 1,
+          "prompt_tokens": 1163,
+          "completion_tokens": 84,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['solicitar_devolucao_dinheiro_cobranca_errada', 'estornar_transacao'] (motivo: O cliente relata cobrança errada no cartão e solicita o dinh)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Me envia a linha digitável da fatura",
+          "route": "AGENT",
+          "tools": [
+            "consultar_fatura",
+            "gerar_linha_digitavel_fatura"
+          ],
+          "confidence": 0.7,
+          "latency_ms": 1050.717000005534,
+          "cost_usd": 0.010321,
+          "llm_calls": 1,
+          "prompt_tokens": 1160,
+          "completion_tokens": 70,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_fatura', 'gerar_linha_digitavel_fatura'] (motivo: O cliente pediu a linha digitável da fatura; é necessário co)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Qual o limite que ainda tenho no cartão de crédito?",
+          "route": "AGENT",
+          "tools": [
+            "consultar_limite_cartao",
+            "consultar_limite_restante_fatura"
+          ],
+          "confidence": 0.86,
+          "latency_ms": 850.1586000056705,
+          "cost_usd": 0.0103163,
+          "llm_calls": 1,
+          "prompt_tokens": 1124,
+          "completion_tokens": 72,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_limite_cartao', 'consultar_limite_restante_fatura'] (motivo: O cliente quer saber quanto limite ainda tem disponível no c)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Posso dividir o pagamento da fatura em parcelas?",
+          "route": "AGENT",
+          "tools": [
+            "parcelar_fatura",
+            "dividir_pagamento_fatura"
+          ],
+          "confidence": 0.78,
+          "latency_ms": 1000.3436999977566,
+          "cost_usd": 0.0103523,
+          "llm_calls": 1,
+          "prompt_tokens": 1129,
+          "completion_tokens": 100,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['parcelar_fatura', 'dividir_pagamento_fatura'] (motivo: O cliente pergunta se é possível dividir/parcelar o pagament)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Quero parcelar minha fatura em 3 vezes",
+          "route": "AGENT",
+          "tools": [
+            "parcelar_fatura",
+            "parcelar_fatura_numero_vezes_escolhido"
+          ],
+          "confidence": 0.83,
+          "latency_ms": 921.8796000059228,
+          "cost_usd": 0.01034235,
+          "llm_calls": 1,
+          "prompt_tokens": 1173,
+          "completion_tokens": 85,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['parcelar_fatura', 'parcelar_fatura_numero_vezes_escolhido'] (motivo: O cliente quer parcelar a fatura em 3 vezes; é necessário ac)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Troquei de número, preciso atualizar o telefone cadastrado",
+          "route": "AGENT",
+          "tools": [
+            "alterar_telefone",
+            "trocar_numero_telefone_cadastro"
+          ],
+          "confidence": 0.83,
+          "latency_ms": 1070.4469999909634,
+          "cost_usd": 0.01031705,
+          "llm_calls": 1,
+          "prompt_tokens": 1109,
+          "completion_tokens": 75,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['alterar_telefone', 'trocar_numero_telefone_cadastro'] (motivo: O cliente informou que trocou de número e precisa atualizar )"
+          ],
+          "error": null
+        },
+        {
+          "query": "Quero mudar o e-mail vinculado à minha conta",
+          "route": "AGENT",
+          "tools": [
+            "atualizar_email",
+            "atualizar_numero_whatsapp"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 1094.99599999981,
+          "cost_usd": 0.01029215,
+          "llm_calls": 1,
+          "prompt_tokens": 1097,
+          "completion_tokens": 57,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['atualizar_email', 'atualizar_numero_whatsapp'] (motivo: O cliente solicitou a troca/mudança do e-mail vinculado à co)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Perdi meu cartão na rua, preciso bloquear agora",
+          "route": "AGENT",
+          "tools": [
+            "bloquear_cartao",
+            "solicitar_bloqueio_preventivo_cartao"
+          ],
+          "confidence": 0.92,
+          "latency_ms": 889.4307000009576,
+          "cost_usd": 0.0103204,
+          "llm_calls": 1,
+          "prompt_tokens": 1157,
+          "completion_tokens": 70,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['bloquear_cartao', 'solicitar_bloqueio_preventivo_cartao'] (motivo: Cliente informou perda do cartão na rua e solicitou bloqueio)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Chegou meu cartão novo, como faço para desbloquear?",
+          "route": "AGENT",
+          "tools": [
+            "desbloquear_cartao",
+            "instrucoes_desbloqueio_cartao_novo"
+          ],
+          "confidence": 0.78,
+          "latency_ms": 788.4341000026325,
+          "cost_usd": 0.0103024,
+          "llm_calls": 1,
+          "prompt_tokens": 1142,
+          "completion_tokens": 58,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['desbloquear_cartao', 'instrucoes_desbloqueio_cartao_novo'] (motivo: O cliente recebeu um cartão novo e quer saber como desbloque)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Meu cartão parou de funcionar, quero uma segunda via",
+          "route": "AGENT",
+          "tools": [
+            "solicitar_segunda_via_cartao",
+            "rastrear_segunda_via_cartao"
+          ],
+          "confidence": 0.86,
+          "latency_ms": 822.9201000067405,
+          "cost_usd": 0.01031085,
+          "llm_calls": 1,
+          "prompt_tokens": 1153,
+          "completion_tokens": 63,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['solicitar_segunda_via_cartao', 'rastrear_segunda_via_cartao'] (motivo: O cliente informa que o cartão parou de funcionar e solicita)"
+          ],
+          "error": null
+        },
+        {
+          "query": "O aplicativo está travando, quero abrir um chamado",
+          "route": "AGENT",
+          "tools": [
+            "abrir_chamado_travamento_app",
+            "abrir_chamado_suporte_app_travando"
+          ],
+          "confidence": 0.85,
+          "latency_ms": 1009.0515000047162,
+          "cost_usd": 0.01035355,
+          "llm_calls": 1,
+          "prompt_tokens": 1129,
+          "completion_tokens": 101,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['abrir_chamado_travamento_app', 'abrir_chamado_suporte_app_travando'] (motivo: O cliente quer abrir um chamado por travamento do aplicativo)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Oi, boa tarde",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.86,
+          "latency_ms": 747.4588000040967,
+          "cost_usd": 0.0002697500000000001,
+          "llm_calls": 1,
+          "prompt_tokens": 1085,
+          "completion_tokens": 41,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: A mensagem é apenas saudação sem pedido acionável ou necessi)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Qual a taxa de manutenção mensal da conta?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.76,
+          "latency_ms": 760.1802999997744,
+          "cost_usd": 0.0002824000000000001,
+          "llm_calls": 1,
+          "prompt_tokens": 1092,
+          "completion_tokens": 50,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: A pergunta é genérica sobre taxa de manutenção mensal da con)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Vocês atendem no sábado?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.9,
+          "latency_ms": 724.5077000115998,
+          "cost_usd": 0.00027490000000000007,
+          "llm_calls": 1,
+          "prompt_tokens": 1067,
+          "completion_tokens": 48,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: A pergunta é genérica sobre horário de atendimento (sábado),)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Muito obrigado pela ajuda, até logo",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.93,
+          "latency_ms": 877.4377000081586,
+          "cost_usd": 0.0002875500000000001,
+          "llm_calls": 1,
+          "prompt_tokens": 1124,
+          "completion_tokens": 49,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: A mensagem é cortesia (agradecimento e despedida), sem solic)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Como funciona o programa de cashback de vocês?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.9,
+          "latency_ms": 692.637600004673,
+          "cost_usd": 0.00029025000000000003,
+          "llm_calls": 1,
+          "prompt_tokens": 1150,
+          "completion_tokens": 47,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: Pergunta genérica sobre como funciona o programa de cashback)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Qual o telefone do SAC?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.72,
+          "latency_ms": 683.1128999911016,
+          "cost_usd": 0.00027710000000000007,
+          "llm_calls": 1,
+          "prompt_tokens": 1103,
+          "completion_tokens": 44,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: Pergunta genérica sobre telefone do SAC, não depende de dado)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Quais documentos preciso para abrir uma conta?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.74,
+          "latency_ms": 877.1702999947593,
+          "cost_usd": 0.00029295000000000005,
+          "llm_calls": 1,
+          "prompt_tokens": 1101,
+          "completion_tokens": 57,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: O cliente perguntou de forma genérica quais documentos são n)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Bom dia! Qual o valor mínimo para abrir uma conta?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.9,
+          "latency_ms": 905.1340000005439,
+          "cost_usd": 0.00028080000000000005,
+          "llm_calls": 1,
+          "prompt_tokens": 1109,
+          "completion_tokens": 46,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: Pergunta genérica sobre valor mínimo para abrir uma conta, s)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Preciso saber o saldo disponível pra pix",
+          "route": "AGENT",
+          "tools": [
+            "consultar_saldo_disponivel_pix",
+            "verificar_saldo_conta_corrente"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 1024.8473999963608,
+          "cost_usd": 0.010303950000000001,
+          "llm_calls": 1,
+          "prompt_tokens": 1081,
+          "completion_tokens": 69,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_saldo_disponivel_pix', 'verificar_saldo_conta_corrente'] (motivo: O cliente quer o saldo disponível para realizar Pix; a ferra)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Essa cobrança na fatura não fui eu, quero estornar",
+          "route": "AGENT",
+          "tools": [
+            "registrar_compra_nao_reconhecida",
+            "solicitar_devolucao_valor_cobranca"
+          ],
+          "confidence": 0.78,
+          "latency_ms": 912.1102999924915,
+          "cost_usd": 0.01033625,
+          "llm_calls": 1,
+          "prompt_tokens": 1155,
+          "completion_tokens": 83,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['registrar_compra_nao_reconhecida', 'solicitar_devolucao_valor_cobranca'] (motivo: O cliente afirma que a cobrança não foi feita por ele e soli)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Manda o pdf da minha fatura atual",
+          "route": "AGENT",
+          "tools": [
+            "consultar_fatura",
+            "reenviar_fatura_email"
+          ],
+          "confidence": 0.78,
+          "latency_ms": 819.2749000008916,
+          "cost_usd": 0.0103091,
+          "llm_calls": 1,
+          "prompt_tokens": 1163,
+          "completion_tokens": 60,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_fatura', 'reenviar_fatura_email'] (motivo: O cliente pediu o PDF da fatura atual; a ferramenta canônica)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Mudei de endereço, como atualizo minha entrega?",
+          "route": "AGENT",
+          "tools": [
+            "processar_mudanca_endereco_atualizar_entrega",
+            "alterar_endereco"
+          ],
+          "confidence": 0.78,
+          "latency_ms": 936.5199000021676,
+          "cost_usd": 0.010344850000000001,
+          "llm_calls": 1,
+          "prompt_tokens": 1123,
+          "completion_tokens": 95,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['processar_mudanca_endereco_atualizar_entrega', 'alterar_endereco'] (motivo: O cliente quer atualizar o endereço após mudança e ajustar a)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Vocês cobram taxa de manutenção de conta?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.86,
+          "latency_ms": 727.5030000018887,
+          "cost_usd": 0.00027555,
+          "llm_calls": 1,
+          "prompt_tokens": 1089,
+          "completion_tokens": 45,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: Pergunta genérica sobre taxa de manutenção de conta, não dep)"
+          ],
+          "error": null
+        }
+      ]
+    },
+    "criticos": {
+      "n": 6,
+      "acuracia_rota": 1.0,
+      "precision_at_k": 1.0,
+      "n_com_tool": 5,
+      "custo_total_usd": 0.051765250000000006,
+      "custo_por_mensagem_usd": 0.008627541666666667,
+      "latencia_p50_ms": 750.7313000096474,
+      "latencia_p95_ms": 1103.284500000882,
+      "tokens_entrada": 6675,
+      "tokens_saida": 337,
+      "tokens_raciocinio": 0,
+      "tokens_cacheados": 0,
+      "chamadas_llm": 6,
+      "erros": 0,
+      "linhas": [
+        {
+          "query": "quero bloquear meu cartao",
+          "route": "AGENT",
+          "tools": [
+            "bloquear_cartao",
+            "desbloquear_cartao"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 744.9689999921247,
+          "cost_usd": 0.01029415,
+          "llm_calls": 1,
+          "prompt_tokens": 1132,
+          "completion_tokens": 53,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['bloquear_cartao', 'desbloquear_cartao'] (motivo: O cliente pediu para bloquear o cartão; a ferramenta corresp)"
+          ],
+          "error": null
+        },
+        {
+          "query": "qero blqouear meu cartaao",
+          "route": "AGENT",
+          "tools": [
+            "bloquear_cartao",
+            "desbloquear_cartao"
+          ],
+          "confidence": 0.9,
+          "latency_ms": 748.2257000083337,
+          "cost_usd": 0.010296350000000001,
+          "llm_calls": 1,
+          "prompt_tokens": 1118,
+          "completion_tokens": 57,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['bloquear_cartao', 'desbloquear_cartao'] (motivo: O cliente solicita 'blqouear' (bloquear) o cartão, indicando)"
+          ],
+          "error": null
+        },
+        {
+          "query": "solicito a emissao do informe de rendimentos para o IRPF",
+          "route": "AGENT",
+          "tools": [
+            "emitir_informe_rendimentos",
+            "solicitar_maquininha_cartao"
+          ],
+          "confidence": 0.98,
+          "latency_ms": 753.2369000109611,
+          "cost_usd": 0.010296350000000001,
+          "llm_calls": 1,
+          "prompt_tokens": 1118,
+          "completion_tokens": 57,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['emitir_informe_rendimentos', 'solicitar_maquininha_cartao'] (motivo: O cliente solicita a emissão do informe de rendimentos para )"
+          ],
+          "error": null
+        },
+        {
+          "query": "oi, preciso de ajuda com o meu saldo",
+          "route": "AGENT",
+          "tools": [
+            "consultar_saldo",
+            "informar_saldo_atual_conta"
+          ],
+          "confidence": 0.74,
+          "latency_ms": 1103.284500000882,
+          "cost_usd": 0.0103175,
+          "llm_calls": 1,
+          "prompt_tokens": 1130,
+          "completion_tokens": 72,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_saldo', 'informar_saldo_atual_conta'] (motivo: Cliente pediu ajuda com o saldo; a ferramenta canônica para )"
+          ],
+          "error": null
+        },
+        {
+          "query": "precido do extrado bnacario",
+          "route": "AGENT",
+          "tools": [
+            "consultar_extrato",
+            "consultar_extrato_inss"
+          ],
+          "confidence": 0.6,
+          "latency_ms": 762.1823000081349,
+          "cost_usd": 0.01028705,
+          "llm_calls": 1,
+          "prompt_tokens": 1084,
+          "completion_tokens": 55,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_extrato', 'consultar_extrato_inss'] (motivo: Cliente solicita extrato bancário (provável extrato bancário)"
+          ],
+          "error": null
+        },
+        {
+          "query": "bom dia, qual o horario de atendimento?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.86,
+          "latency_ms": 730.2122999972198,
+          "cost_usd": 0.00027385,
+          "llm_calls": 1,
+          "prompt_tokens": 1093,
+          "completion_tokens": 43,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: O cliente pergunta genericamente o horário de atendimento; i)"
+          ],
+          "error": null
+        }
+      ]
+    },
+    "fallbacks": 1,
+    "custo_desconhecido": false,
+    "descontinuado_em": null
+  },
+  "V1.0.1 / gpt-5.6-luna": {
+    "modelo": "gpt-5.6-luna",
+    "reasoning_effort": "none",
+    "oficial": {
+      "n": 30,
+      "acuracia_rota": 1.0,
+      "precision_at_k": 0.8,
+      "n_com_tool": 20,
+      "custo_total_usd": 0.20851240000000001,
+      "custo_por_mensagem_usd": 0.006950413333333334,
+      "latencia_p50_ms": 1235.9969999961322,
+      "latencia_p95_ms": 1888.4318000054918,
+      "tokens_entrada": 33763,
+      "tokens_saida": 1429,
+      "tokens_raciocinio": 0,
+      "tokens_cacheados": 0,
+      "chamadas_llm": 30,
+      "erros": 0,
+      "linhas": [
+        {
+          "query": "Qual o valor da minha fatura desse mês?",
+          "route": "AGENT",
+          "tools": [
+            "consultar_fatura",
+            "parcelar_fatura"
+          ],
+          "confidence": 0.98,
+          "latency_ms": 1414.4522999995388,
+          "cost_usd": 0.0102979,
+          "llm_calls": 1,
+          "prompt_tokens": 1164,
+          "completion_tokens": 53,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_fatura', 'parcelar_fatura'] (motivo: A consulta depende da fatura específica do cliente, e a ferr)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Quero saber meu saldo",
+          "route": "AGENT",
+          "tools": [
+            "consultar_saldo",
+            "consultar_saldo_poupanca"
+          ],
+          "confidence": 0.99,
+          "latency_ms": 1268.1618999922648,
+          "cost_usd": 0.0102885,
+          "llm_calls": 1,
+          "prompt_tokens": 1111,
+          "completion_tokens": 54,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_saldo', 'consultar_saldo_poupanca'] (motivo: O cliente solicita uma consulta do saldo da própria conta, s)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Bom dia, qual o horário de atendimento?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.99,
+          "latency_ms": 934.0340000053402,
+          "cost_usd": 0.00026330000000000006,
+          "llm_calls": 1,
+          "prompt_tokens": 1093,
+          "completion_tokens": 36,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: Pergunta genérica sobre o horário de atendimento da institui)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Preciso mudei de casa, como mudo o CEP?",
+          "route": "AGENT",
+          "tools": [
+            "alterar_endereco",
+            "atualizar_cep_entrega"
+          ],
+          "confidence": 0.97,
+          "latency_ms": 1110.3012999956263,
+          "cost_usd": 0.0102887,
+          "llm_calls": 1,
+          "prompt_tokens": 1160,
+          "completion_tokens": 46,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['alterar_endereco', 'atualizar_cep_entrega'] (motivo: O cliente solicita uma ação na própria conta para atualizar )"
+          ],
+          "error": null
+        },
+        {
+          "query": "Quanto eu tenho disponível na conta agora?",
+          "route": "AGENT",
+          "tools": [
+            "consultar_valor_disponivel_conta",
+            "consultar_saldo_poupanca"
+          ],
+          "confidence": 0.99,
+          "latency_ms": 1063.4329000022262,
+          "cost_usd": 0.0102833,
+          "llm_calls": 1,
+          "prompt_tokens": 1103,
+          "completion_tokens": 51,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_valor_disponivel_conta', 'consultar_saldo_poupanca'] (motivo: O cliente solicita o valor disponível agora na conta, uma co)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Fiz uma compra que não reconheço, quero contestar",
+          "route": "AGENT",
+          "tools": [
+            "contestar_compra_desconhecida",
+            "estornar_transacao"
+          ],
+          "confidence": 0.99,
+          "latency_ms": 1514.1262999968603,
+          "cost_usd": 0.0102983,
+          "llm_calls": 1,
+          "prompt_tokens": 1154,
+          "completion_tokens": 55,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['contestar_compra_desconhecida', 'estornar_transacao'] (motivo: O cliente quer contestar uma compra não reconhecida, e a fer)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Cobraram algo errado no meu cartão, quero o dinheiro de volta",
+          "route": "AGENT",
+          "tools": [
+            "solicitar_devolucao_dinheiro_cobranca_errada",
+            "consultar_limite_cartao"
+          ],
+          "confidence": 0.98,
+          "latency_ms": 1540.0817999907304,
+          "cost_usd": 0.0102989,
+          "llm_calls": 1,
+          "prompt_tokens": 1163,
+          "completion_tokens": 54,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['solicitar_devolucao_dinheiro_cobranca_errada', 'consultar_limite_cartao'] (motivo: O cliente solicita a devolução de uma cobrança errada feita )"
+          ],
+          "error": null
+        },
+        {
+          "query": "Me envia a linha digitável da fatura",
+          "route": "AGENT",
+          "tools": [
+            "consultar_fatura",
+            "parcelar_fatura"
+          ],
+          "confidence": 0.98,
+          "latency_ms": 1407.64429999399,
+          "cost_usd": 0.010291100000000001,
+          "llm_calls": 1,
+          "prompt_tokens": 1160,
+          "completion_tokens": 48,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_fatura', 'parcelar_fatura'] (motivo: O cliente solicita a linha digitável da fatura, uma ação esp)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Qual o limite que ainda tenho no cartão de crédito?",
+          "route": "AGENT",
+          "tools": [
+            "consultar_limite_cartao",
+            "aumentar_limite_cartao"
+          ],
+          "confidence": 0.99,
+          "latency_ms": 2098.998400004348,
+          "cost_usd": 0.0102767,
+          "llm_calls": 1,
+          "prompt_tokens": 1124,
+          "completion_tokens": 42,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_limite_cartao', 'aumentar_limite_cartao'] (motivo: A consulta depende dos dados do cartão específico do cliente)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Posso dividir o pagamento da fatura em parcelas?",
+          "route": "AGENT",
+          "tools": [
+            "parcelar_fatura",
+            "dividir_pagamento_fatura"
+          ],
+          "confidence": 0.98,
+          "latency_ms": 1588.2554999989225,
+          "cost_usd": 0.0102801,
+          "llm_calls": 1,
+          "prompt_tokens": 1129,
+          "completion_tokens": 44,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['parcelar_fatura', 'dividir_pagamento_fatura'] (motivo: O cliente solicita uma ação específica para parcelar a fatur)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Quero parcelar minha fatura em 3 vezes",
+          "route": "AGENT",
+          "tools": [
+            "parcelar_fatura",
+            "dividir_pagamento_fatura"
+          ],
+          "confidence": 0.99,
+          "latency_ms": 1444.388700008858,
+          "cost_usd": 0.0102997,
+          "llm_calls": 1,
+          "prompt_tokens": 1173,
+          "completion_tokens": 53,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['parcelar_fatura', 'dividir_pagamento_fatura'] (motivo: O cliente solicita uma ação específica na fatura, e parcelar)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Troquei de número, preciso atualizar o telefone cadastrado",
+          "route": "AGENT",
+          "tools": [
+            "alterar_telefone",
+            "atualizar_email"
+          ],
+          "confidence": 0.99,
+          "latency_ms": 1533.9329999987967,
+          "cost_usd": 0.010279700000000001,
+          "llm_calls": 1,
+          "prompt_tokens": 1109,
+          "completion_tokens": 47,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['alterar_telefone', 'atualizar_email'] (motivo: O cliente solicitou uma ação específica para atualizar o tel)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Quero mudar o e-mail vinculado à minha conta",
+          "route": "AGENT",
+          "tools": [
+            "atualizar_email",
+            "atualizar_numero_whatsapp"
+          ],
+          "confidence": 0.99,
+          "latency_ms": 873.3302000036929,
+          "cost_usd": 0.0102713,
+          "llm_calls": 1,
+          "prompt_tokens": 1097,
+          "completion_tokens": 42,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['atualizar_email', 'atualizar_numero_whatsapp'] (motivo: O cliente solicita a alteração do e-mail cadastrado na conta)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Perdi meu cartão na rua, preciso bloquear agora",
+          "route": "AGENT",
+          "tools": [
+            "bloquear_cartao",
+            "bloquear_cartao_temporariamente"
+          ],
+          "confidence": 0.99,
+          "latency_ms": 1309.4914999965113,
+          "cost_usd": 0.0102845,
+          "llm_calls": 1,
+          "prompt_tokens": 1157,
+          "completion_tokens": 43,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['bloquear_cartao', 'bloquear_cartao_temporariamente'] (motivo: O cliente perdeu o cartão e solicita explicitamente o bloque)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Chegou meu cartão novo, como faço para desbloquear?",
+          "route": "AGENT",
+          "tools": [
+            "desbloquear_cartao",
+            "instrucoes_desbloqueio_cartao_novo"
+          ],
+          "confidence": 0.99,
+          "latency_ms": 1561.0428000072716,
+          "cost_usd": 0.0102851,
+          "llm_calls": 1,
+          "prompt_tokens": 1142,
+          "completion_tokens": 46,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['desbloquear_cartao', 'instrucoes_desbloqueio_cartao_novo'] (motivo: O cliente solicita desbloquear um cartão novo recebido, uma )"
+          ],
+          "error": null
+        },
+        {
+          "query": "Meu cartão parou de funcionar, quero uma segunda via",
+          "route": "AGENT",
+          "tools": [
+            "emitir_segunda_via_cartao_parou_funcionar",
+            "solicitar_segunda_via_cartao"
+          ],
+          "confidence": 0.98,
+          "latency_ms": 1159.9806000012904,
+          "cost_usd": 0.010298100000000001,
+          "llm_calls": 1,
+          "prompt_tokens": 1153,
+          "completion_tokens": 55,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['emitir_segunda_via_cartao_parou_funcionar', 'solicitar_segunda_via_cartao'] (motivo: O cliente relata que o cartão parou de funcionar e solicita )"
+          ],
+          "error": null
+        },
+        {
+          "query": "O aplicativo está travando, quero abrir um chamado",
+          "route": "AGENT",
+          "tools": [
+            "abrir_chamado_travamento_app",
+            "cancelar_chamado_suporte"
+          ],
+          "confidence": 0.99,
+          "latency_ms": 1888.4318000054918,
+          "cost_usd": 0.0102849,
+          "llm_calls": 1,
+          "prompt_tokens": 1129,
+          "completion_tokens": 48,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['abrir_chamado_travamento_app', 'cancelar_chamado_suporte'] (motivo: O cliente solicita abrir um chamado para um travamento espec)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Oi, boa tarde",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 1.0,
+          "latency_ms": 1383.3464999916032,
+          "cost_usd": 0.00025690000000000006,
+          "llm_calls": 1,
+          "prompt_tokens": 1085,
+          "completion_tokens": 32,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: Saudação sem pedido acionável.)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Qual a taxa de manutenção mensal da conta?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.98,
+          "latency_ms": 1194.8547000065446,
+          "cost_usd": 0.00027630000000000005,
+          "llm_calls": 1,
+          "prompt_tokens": 1092,
+          "completion_tokens": 47,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: Pergunta genérica sobre a taxa de manutenção da conta, sem d)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Vocês atendem no sábado?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.99,
+          "latency_ms": 1120.5019000044558,
+          "cost_usd": 0.00026770000000000006,
+          "llm_calls": 1,
+          "prompt_tokens": 1067,
+          "completion_tokens": 44,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: É uma pergunta genérica sobre o horário de atendimento da in)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Muito obrigado pela ajuda, até logo",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 1.0,
+          "latency_ms": 1067.767600005027,
+          "cost_usd": 0.0002707000000000001,
+          "llm_calls": 1,
+          "prompt_tokens": 1124,
+          "completion_tokens": 37,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: Mensagem de agradecimento e despedida, sem pedido acionável.)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Como funciona o programa de cashback de vocês?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.99,
+          "latency_ms": 1480.578799993964,
+          "cost_usd": 0.00028910000000000003,
+          "llm_calls": 1,
+          "prompt_tokens": 1150,
+          "completion_tokens": 48,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: É uma pergunta genérica sobre como funciona um programa da i)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Qual o telefone do SAC?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.99,
+          "latency_ms": 1188.0737000028603,
+          "cost_usd": 0.00027610000000000004,
+          "llm_calls": 1,
+          "prompt_tokens": 1103,
+          "completion_tokens": 45,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: Pergunta genérica sobre o canal de atendimento da instituiçã)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Quais documentos preciso para abrir uma conta?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.99,
+          "latency_ms": 1111.2560000037774,
+          "cost_usd": 0.00028050000000000004,
+          "llm_calls": 1,
+          "prompt_tokens": 1101,
+          "completion_tokens": 49,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: É uma pergunta genérica sobre os documentos necessários para)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Bom dia! Qual o valor mínimo para abrir uma conta?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.99,
+          "latency_ms": 1042.076800003997,
+          "cost_usd": 0.00027850000000000005,
+          "llm_calls": 1,
+          "prompt_tokens": 1109,
+          "completion_tokens": 46,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: É uma pergunta genérica sobre a instituição e não depende do)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Preciso saber o saldo disponível pra pix",
+          "route": "AGENT",
+          "tools": [
+            "consultar_saldo_disponivel_pix",
+            "consultar_saldo_poupanca"
+          ],
+          "confidence": 0.99,
+          "latency_ms": 1068.08889999229,
+          "cost_usd": 0.0102717,
+          "llm_calls": 1,
+          "prompt_tokens": 1081,
+          "completion_tokens": 45,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_saldo_disponivel_pix', 'consultar_saldo_poupanca'] (motivo: O cliente solicita o saldo disponível especificamente para r)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Essa cobrança na fatura não fui eu, quero estornar",
+          "route": "AGENT",
+          "tools": [
+            "registrar_compra_nao_reconhecida",
+            "estornar_transacao"
+          ],
+          "confidence": 0.98,
+          "latency_ms": 1203.8320999999996,
+          "cost_usd": 0.0103045,
+          "llm_calls": 1,
+          "prompt_tokens": 1155,
+          "completion_tokens": 60,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['registrar_compra_nao_reconhecida', 'estornar_transacao'] (motivo: O cliente não reconhece a cobrança e solicita estorno, porta)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Manda o pdf da minha fatura atual",
+          "route": "AGENT",
+          "tools": [
+            "consultar_fatura",
+            "reenviar_fatura_email"
+          ],
+          "confidence": 0.98,
+          "latency_ms": 1203.1881000002613,
+          "cost_usd": 0.0103001,
+          "llm_calls": 1,
+          "prompt_tokens": 1163,
+          "completion_tokens": 55,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_fatura', 'reenviar_fatura_email'] (motivo: O cliente solicita o PDF da fatura atual, e a ferramenta can)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Mudei de endereço, como atualizo minha entrega?",
+          "route": "AGENT",
+          "tools": [
+            "processar_mudanca_endereco_atualizar_entrega",
+            "alterar_endereco"
+          ],
+          "confidence": 0.98,
+          "latency_ms": 1148.4754999983124,
+          "cost_usd": 0.0102909,
+          "llm_calls": 1,
+          "prompt_tokens": 1123,
+          "completion_tokens": 54,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['processar_mudanca_endereco_atualizar_entrega', 'alterar_endereco'] (motivo: O cliente solicita uma ação na conta para atualizar o endere)"
+          ],
+          "error": null
+        },
+        {
+          "query": "Vocês cobram taxa de manutenção de conta?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.98,
+          "latency_ms": 1367.6708999992115,
+          "cost_usd": 0.0002793,
+          "llm_calls": 1,
+          "prompt_tokens": 1089,
+          "completion_tokens": 50,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: É uma pergunta genérica sobre a taxa de manutenção da instit)"
+          ],
+          "error": null
+        }
+      ]
+    },
+    "criticos": {
+      "n": 6,
+      "acuracia_rota": 1.0,
+      "precision_at_k": 1.0,
+      "n_com_tool": 5,
+      "custo_total_usd": 0.051676400000000004,
+      "custo_por_mensagem_usd": 0.008612733333333334,
+      "latencia_p50_ms": 1124.2440499991062,
+      "latencia_p95_ms": 1152.8621999896131,
+      "tokens_entrada": 6675,
+      "tokens_saida": 277,
+      "tokens_raciocinio": 0,
+      "tokens_cacheados": 0,
+      "chamadas_llm": 6,
+      "erros": 0,
+      "linhas": [
+        {
+          "query": "quero bloquear meu cartao",
+          "route": "AGENT",
+          "tools": [
+            "bloquear_cartao",
+            "desbloquear_cartao"
+          ],
+          "confidence": 0.99,
+          "latency_ms": 1105.9668000089005,
+          "cost_usd": 0.0102879,
+          "llm_calls": 1,
+          "prompt_tokens": 1132,
+          "completion_tokens": 50,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['bloquear_cartao', 'desbloquear_cartao'] (motivo: O cliente solicita o bloqueio do próprio cartão, e a ferrame)"
+          ],
+          "error": null
+        },
+        {
+          "query": "qero blqouear meu cartaao",
+          "route": "AGENT",
+          "tools": [
+            "bloquear_cartao",
+            "desbloquear_cartao"
+          ],
+          "confidence": 0.99,
+          "latency_ms": 1152.8621999896131,
+          "cost_usd": 0.0102779,
+          "llm_calls": 1,
+          "prompt_tokens": 1118,
+          "completion_tokens": 44,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['bloquear_cartao', 'desbloquear_cartao'] (motivo: O cliente solicita bloquear o próprio cartão, apesar dos err)"
+          ],
+          "error": null
+        },
+        {
+          "query": "solicito a emissao do informe de rendimentos para o IRPF",
+          "route": "AGENT",
+          "tools": [
+            "emitir_informe_rendimentos",
+            "solicitar_maquininha_cartao"
+          ],
+          "confidence": 0.99,
+          "latency_ms": 1139.5500999933574,
+          "cost_usd": 0.010289900000000001,
+          "llm_calls": 1,
+          "prompt_tokens": 1118,
+          "completion_tokens": 54,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['emitir_informe_rendimentos', 'solicitar_maquininha_cartao'] (motivo: O cliente solicita a emissão de um informe de rendimentos pa)"
+          ],
+          "error": null
+        },
+        {
+          "query": "oi, preciso de ajuda com o meu saldo",
+          "route": "AGENT",
+          "tools": [
+            "consultar_saldo",
+            "consultar_saldo_pj"
+          ],
+          "confidence": 0.99,
+          "latency_ms": 1122.6123999949777,
+          "cost_usd": 0.0102815,
+          "llm_calls": 1,
+          "prompt_tokens": 1130,
+          "completion_tokens": 45,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_saldo', 'consultar_saldo_pj'] (motivo: O cliente solicita uma consulta do saldo da própria conta, a)"
+          ],
+          "error": null
+        },
+        {
+          "query": "precido do extrado bnacario",
+          "route": "AGENT",
+          "tools": [
+            "consultar_extrato",
+            "consultar_extrato_inss"
+          ],
+          "confidence": 0.99,
+          "latency_ms": 1125.8757000032347,
+          "cost_usd": 0.010275900000000001,
+          "llm_calls": 1,
+          "prompt_tokens": 1084,
+          "completion_tokens": 48,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> AGENT ['consultar_extrato', 'consultar_extrato_inss'] (motivo: O cliente solicita o extrato bancário da própria conta, uma )"
+          ],
+          "error": null
+        },
+        {
+          "query": "bom dia, qual o horario de atendimento?",
+          "route": "FAST_PATH",
+          "tools": [],
+          "confidence": 0.99,
+          "latency_ms": 842.5379000109388,
+          "cost_usd": 0.00026330000000000006,
+          "llm_calls": 1,
+          "prompt_tokens": 1093,
+          "completion_tokens": 36,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "trace": [
+            "recuperacao_local -> 20 candidatas",
+            "llm -> FAST_PATH [] (motivo: Pergunta genérica sobre o horário de atendimento da institui)"
+          ],
+          "error": null
+        }
+      ]
+    },
+    "fallbacks": 0,
+    "custo_desconhecido": false,
+    "descontinuado_em": null
+  }
+}

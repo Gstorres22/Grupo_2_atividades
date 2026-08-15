@@ -59,11 +59,38 @@ class Settings:
     enable_llm_escalation: bool
     router_confidence_threshold: float
     retriever_margin_threshold: float
+    # --- V1.0.1: orquestrador por LLM ---
+    orchestrator_model: str
+    orchestrator_reasoning_effort: str
+    """Quanto o modelo deve "pensar" antes de responder: none/low/medium/high.
+
+    So se aplica a modelos de raciocinio (familia GPT-5, serie o). O padrao de
+    FABRICA da familia 5.6 e "medium", que gasta tokens invisiveis cobrados como
+    saida. Para classificacao usamos "none": medimos 23 tokens de raciocinio por
+    chamada no default contra 0 com "none", sem ganho de acerto que justifique."""
+    # --- Camada de testes com subagentes (personas e avaliadores) ---
+    agents_model: str
+    """Modelo usado pelos subagentes que TESTAM o sistema.
+
+    Deliberadamente separado de `orchestrator_model`: quem avalia nao deve ser
+    o mesmo modelo que e avaliado. LLMs tendem a preferir as proprias saidas
+    (vies de auto-preferencia), entao usar o mesmo modelo nos dois papeis
+    inflaria a nota. Ver ADR-16 em V1_0_1_DECISIONS.md."""
 
     @property
     def llm_enabled(self) -> bool:
         """Ha chave E o escalonamento esta ligado?"""
         return bool(self.openai_api_key) and self.enable_llm_escalation
+
+    @property
+    def agents_enabled(self) -> bool:
+        """A camada de subagentes (personas e avaliadores) pode rodar?
+
+        Os subagentes NAO participam do pipeline de atendimento — nem na V1,
+        nem na V1.0.1. Eles apenas geram os casos de teste e avaliam os
+        resultados, sempre offline.
+        """
+        return bool(self.openai_api_key)
 
     def describe(self) -> str:
         """Resumo legivel do modo de operacao — util no topo dos notebooks."""
@@ -89,4 +116,7 @@ def get_settings() -> Settings:
         enable_llm_escalation=_as_bool(os.environ.get("ENABLE_LLM_ESCALATION"), default=True),
         router_confidence_threshold=_as_float(os.environ.get("ROUTER_CONFIDENCE_THRESHOLD"), 0.65),
         retriever_margin_threshold=_as_float(os.environ.get("RETRIEVER_MARGIN_THRESHOLD"), 0.05),
+        orchestrator_model=os.environ.get("OPENAI_MODEL_ORCHESTRATOR", "gpt-4o-mini"),
+        orchestrator_reasoning_effort=os.environ.get("ORCHESTRATOR_REASONING_EFFORT", "none"),
+        agents_model=os.environ.get("OPENAI_MODEL_AGENTS", "gpt-5.6-sol"),
     )

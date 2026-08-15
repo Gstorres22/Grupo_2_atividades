@@ -16,3 +16,14 @@ reports/
 App/cache/
 .ipynb_checkpoints/
 *.ipynb_checkpoints
+
+# --- Relatorios dos subagentes: SAO versionados de proposito ---
+# A regra `reports/` da linha 5 (do case original) tambem pegava App/reports/.
+# Mas esses relatorios sao entregavel: registram o que as personas geraram e o
+# que os avaliadores concluiram, e sem eles as conclusoes da V1.0.1 nao teriam
+# como ser conferidas por outra pessoa. A excecao abaixo os traz de volta.
+!App/reports/
+!App/reports/**
+
+# O log bruto de execucao nao: e ruido de terminal, regeneravel a cada rodada.
+App/reports/bateria_log.txt
