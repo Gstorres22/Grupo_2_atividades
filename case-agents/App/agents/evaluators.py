@@ -61,7 +61,7 @@ mensagem do cliente ele decide:
 O catalogo tem quase-duplicatas propositais: para varias mensagens, a ferramenta
 mais parecida lexicalmente NAO e a correta.
 
-## AS DUAS VERSOES COMPARADAS
+## AS VERSOES COMPARADAS
 
 - **V1**: decisao 100% local. Classificador scikit-learn (TF-IDF de n-gramas de
   caractere + Regressao Logistica, treinado com 53 exemplos) decide a rota;
@@ -72,6 +72,21 @@ mais parecida lexicalmente NAO e a correta.
 - **V1.0.1**: um LLM pequeno decide a rota E escolhe as ferramentas, em UMA
   unica chamada. O estagio local de recuperacao continua existindo e reduz 285
   para 20 candidatas antes do LLM entrar — o LLM nunca ve o catalogo inteiro.
+
+- **V1.0.2**: cascata hibrida. O classificador local roda primeiro; se ele
+  disser FAST_PATH com confianca acima do limiar E a mensagem for parecida com
+  algum exemplo de treino ("familiaridade"), a resposta sai local e o LLM NAO e
+  chamado. Todo o resto vai para o orquestrador da V1.0.1, que e literalmente o
+  mesmo codigo. Os limiares foram calibrados por validacao cruzada APENAS nos
+  53 exemplos de treino, sem consultar nenhum conjunto de teste.
+
+  Ponto de atencao para a sua analise: a economia da cascata e proporcional a
+  fracao de FAST_PATH no trafego. O conjunto das personas e pesado em AGENT
+  (113 de 150 mensagens tem ferramenta esperada), entao a taxa de desvio
+  observada SUBESTIMA o ganho que a cascata teria num atendimento real. Por
+  outro lado, a calibracao por validacao cruzada num conjunto de treino
+  linguisticamente estreito e OTIMISTA por construcao — ela nao consegue
+  enxergar mudanca de registro, que e justamente o modo de falha da V1.
 
 ## LIMITACOES CONHECIDAS DOS DADOS
 
@@ -210,16 +225,44 @@ def montar_dossie(comparacao: Dict, max_falhas: int = 12) -> str:
                     for v, dados_v in valores.items()
                 ) + "  (formato: rota/P@2)")
 
-    divergencias = comparacao.get("divergencias", [])[:max_falhas]
+    # Placar par a par: quantas vezes cada versao ganhou da outra.
+    # Vem antes da amostra porque e o dado QUANTITATIVO; a amostra e ilustrativa.
+    divergencias = comparacao.get("divergencias", [])
     if divergencias:
-        partes.append(f"\n## Casos em que as versoes divergiram (amostra de {len(divergencias)})\n")
-        for d in divergencias:
+        partes.append("\n## Placar de divergencias (quantitativo, todas as mensagens)\n")
+        for par in sorted({d["par"] for d in divergencias}):
+            do_par = [d for d in divergencias if d["par"] == par]
+            a, b = par.split(" x ")
             partes.append(
-                f"- Mensagem: {d.get('query','')[:90]!r}\n"
-                f"  esperado: rota={d.get('expected_route')} tool={d.get('expected_tool')}\n"
-                f"  V1:     rota={d.get('v1_route')} tools={d.get('v1_tools')}\n"
-                f"  V1.0.1: rota={d.get('v101_route')} tools={d.get('v101_tools')}"
+                f"- **{par}**: {len(do_par)} divergencias | "
+                f"so {b} acertou: {sum(1 for d in do_par if d['vantagem_b'] == 1)} | "
+                f"so {a} acertou: {sum(1 for d in do_par if d['vantagem_b'] == -1)} | "
+                f"ambas certas ou ambas erradas: {sum(1 for d in do_par if d['vantagem_b'] == 0)}"
             )
+
+        # Amostra ilustrativa, priorizando os casos decisivos (uma acertou, a
+        # outra nao) — sao os unicos que informam sobre a diferenca.
+        amostra = [d for d in divergencias if d["vantagem_b"] != 0][:max_falhas]
+        if amostra:
+            partes.append(f"\n## Amostra de casos decisivos ({len(amostra)} de "
+                          f"{sum(1 for d in divergencias if d['vantagem_b'] != 0)})\n")
+            partes.append("_Selecao: apenas casos em que uma versao acertou e a outra errou._\n")
+            for d in amostra:
+                linha = [f"- [{d['par']}] {d.get('query','')[:88]!r}",
+                         f"  esperado: rota={d.get('expected_route')} tool={d.get('expected_tool')}"]
+                for chave, valor in d.items():
+                    if chave.endswith("_route"):
+                        versao = chave[:-6]
+                        linha.append(f"  {versao}: rota={valor} tools={d.get(versao + '_tools')} "
+                                     f"ok={d.get(versao + '_ok')}")
+                partes.append("\n".join(linha))
+
+    telemetria = comparacao.get("telemetria")
+    if telemetria:
+        partes.append("\n## Telemetria das versoes\n")
+        for versao, dados in telemetria.items():
+            partes.append(f"- **{versao}**: " + ", ".join(f"{k}={v}" for k, v in dados.items()
+                                                          if k != "nota"))
 
     extra = comparacao.get("observacoes")
     if extra:

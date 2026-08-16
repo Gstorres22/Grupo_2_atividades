@@ -72,12 +72,22 @@ estágio vetorial da busca, desempate em casos ambíguos ([ADR-11](#adr-11)) e a
 3. O treino tem **53 exemplos**. Vocabulário de palavras seria esparso demais; n-gramas de
    caractere geram muito mais sinal por exemplo.
 
-**Evidência.** Acurácia em validação cruzada 5-fold, mesmo classificador:
+**Evidência — e uma correção importante sobre ela.** A primeira versão deste ADR reportava
+0,905 contra 0,867, sugerindo vantagem clara. Uma revisão externa apontou que os dois números
+vinham de protocolos diferentes. Refizemos com a **configuração real do router** (`C=5`,
+`class_weight="balanced"`), variando a semente da validação cruzada:
 
-| Analisador | CV5 |
-|---|---|
-| `char_wb(2,5)` | **0,905** |
-| `word(1,2)` | 0,867 |
+| Analisador | CV5 (semente 42) | Média de 10 sementes | Desvio |
+|---|---|---|---|
+| `char_wb(2,5)` | 0,9055 | **0,8924** | 0,0222 |
+| `word(1,2)` | 0,9055 | 0,8813 | 0,0290 |
+
+**A diferença é de 1,1 ponto contra desvio de 2–3 pontos: está dentro do ruído.** Numa única
+semente, os dois empatam.
+
+A escolha de `char_wb` **continua de pé**, mas pelo argumento linguístico dos itens 1 a 3 — não
+por superioridade estatística demonstrada. Vender ruído como evidência seria o mesmo erro que
+este documento cobra dos outros.
 
 ---
 
@@ -95,8 +105,20 @@ estágio vetorial da busca, desempate em casos ambíguos ([ADR-11](#adr-11)) e a
 3. Com 53 exemplos, modelo simples e regularizado é a escolha certa. Modelo complexo decoraria
    o treino.
 
-**Evidência.** `LinearSVC` deu CV5 = 0,887, abaixo da Regressão Logística (0,905) — ou seja,
-não houve nem troca de acurácia por interpretabilidade a fazer.
+**Evidência.** `LinearSVC` ficou abaixo da Regressão Logística na validação cruzada, então não
+houve troca de acurácia por interpretabilidade a fazer — ganhamos nas duas.
+
+**Correção sobre o parâmetro `C`.** O código dizia que `C=5.0` foi "escolhido por validação
+cruzada". Não foi, e a revisão externa estava certa em cobrar: a validação cruzada é **plana**
+nesse intervalo.
+
+| `C` | 0,1 | 1 | 5 | 10 |
+|---|---|---|---|---|
+| CV5 | 0,9055 | 0,9055 | 0,9055 | 0,9055 |
+
+Com 53 exemplos e um vetorizador esparso, a regularização não muda o resultado. `C=5` é um
+valor razoável, **não uma escolha guiada por dados** — e o docstring foi corrigido para dizer
+isso. A informação útil aqui é justamente que o modelo é insensível ao parâmetro.
 
 ---
 
@@ -135,7 +157,10 @@ embeddings da OpenAI.
 
 - **Lexical acerta o termo e erra o sentido.** Para `"Preciso mudei de casa, como mudo o CEP?"`
   → `alterar_endereco`, a palavra "endereço" não aparece na query. Não há caractere em comum
-  entre *CEP/casa* e *endereço*. Medido: a tool correta ficou na **posição 90 de 285**.
+  entre *CEP/casa* e *endereço*. Medido com a implementação atual: a tool correta fica na
+  **posição 76 de 285** sem o prior e na **56** com ele — em ambos os casos, muito fora de
+  qualquer top-k utilizável. *(Uma versão anterior deste documento dizia "posição 90"; aquele
+  número vinha de uma configuração de protótipo com BM25, não da implementação entregue.)*
 - **Vetorial acerta o sentido e escorrega no termo.** Embeddings aproximam `consultar_saldo`
   de *todas* as variantes de saldo, inclusive `consultar_saldo_poupanca` e `consultar_saldo_pj`.
   Para separar "poupança" de "corrente", o sinal lexical é mais confiável.
@@ -190,9 +215,8 @@ Query: "Quanto eu tenho disponível na conta agora?"
                   ↑ quase uma cópia da query — vence por similaridade
 ```
 
-**Decisão.** Multiplicar o score fundido por `(1 − λ · especificidade)`, com `λ = 0,35`.
-A especificidade combina dois sinais observáveis, com peso igual: número de tokens do nome e
-tamanho da descrição.
+**Decisão.** Multiplicar o score fundido por `(1 − λ · especificidade)`, com `λ = 0,40`.
+A especificidade é medida por **um** sinal: o número de tokens do nome.
 
 **Por quê.** O gabarito premia a **capacidade canônica**, não a paráfrase mais literal. Isso faz
 sentido em produção: entre duas tools que atendem à intenção, a mais geral cobre mais casos e é
@@ -202,20 +226,49 @@ irrelevante não sobe no ranking só por ser genérica.
 
 **Evidência.**
 
-| λ | Precision@2 |
-|---|---|
-| 0,0 | 0,45 |
-| 0,1 | 0,65 |
-| 0,2 | 0,75 |
-| **0,35 (adotado)** | **0,85** |
-| 0,5 | 0,80 |
+| λ | 0,00 | 0,20 | 0,25 | 0,30 | **0,40** | 0,50 | 0,55 | 0,60 |
+|---|---|---|---|---|---|---|---|---|
+| Precision@2 | 0,45 | 0,75 | 0,85 | 0,85 | **0,85** | 0,85 | 0,80 | 0,75 |
 
-**Honestidade metodológica — sobre ajustar no conjunto de teste.** O valor `λ = 0,35` **não** foi
-escolhido pelo pico da curva. Escolher o pico com 20 queries seria ajustar no próprio teste
-(*leakage*) e o número reportado seria otimista. Foi escolhido o **centro do platô estável**
-(0,2 a 0,5, onde P@2 fica entre 0,75 e 0,85). A largura desse platô é justamente a evidência de
-que o resultado não depende de um ajuste frágil. A calibração definitiva roda no conjunto
-ampliado ([ADR-12](#adr-12)).
+`λ = 0,40` é o **centro do platô 0,25–0,50**, onde o resultado fica constante em 0,85. A largura
+do platô é a evidência de que não depende de ajuste frágil.
+
+---
+
+### Correção registrada — este ADR estava errado, e a correção melhorou a solução
+
+A primeira versão usava **dois** sinais de especificidade (tokens do nome + tamanho da
+descrição) com `λ = 0,35`, e afirmava ser o centro de um platô. Uma revisão externa mediu e
+mostrou duas coisas, ambas procedentes:
+
+**1. Não era platô, era pico isolado.** Com os dois sinais:
+
+| λ | 0,30 | **0,35** | 0,40 | 0,50 |
+|---|---|---|---|---|
+| Precision@2 | 0,75 | **0,85** | 0,80 | 0,80 |
+
+O 0,85 acontecia em exatamente um ponto. O parágrafo de "honestidade metodológica" afirmava o
+contrário do que o dado mostrava — o pior tipo de erro possível num documento cujo argumento é
+rigor.
+
+**2. O sinal de descrição contribuía zero.** Ablação com o mesmo λ:
+
+| Sinal de especificidade | Precision@2 |
+|---|---|
+| só tokens do nome | **0,85** |
+| só tamanho da descrição | 0,55 |
+| os dois, 50/50 | 0,85 |
+
+O docstring dizia "peso igual por não haver evidência para preferir um". A evidência existia e
+estava a cinco linhas de código.
+
+**A correção resolveu os dois de uma vez.** Removendo a descrição e movendo para `λ = 0,40`:
+mesmo 0,85, mas num platô real de 0,25 a 0,50 — e com um parâmetro a menos para ajustar. A
+afirmação metodológica passou a ser verdadeira, e a solução ficou mais simples e mais robusta.
+
+**Lição registrada:** afirmação sobre a forma de uma curva precisa ser verificada contra a
+curva. Escrevemos "centro do platô" a partir de números de protótipo e não revalidamos depois
+que a implementação final mudou.
 
 ---
 
@@ -402,7 +455,7 @@ regra para não mexer em decisão do case sem necessidade.
 |---|---|---|---|
 | Acurácia do Router | — | **100%** (IC95%: 88,6%–100%) | ADR-01/02/03 |
 | Precision@2 | 0,25 | **0,85** | ADR-05/06/07 |
-| MRR@2 | — | 0,800 | — |
+| MRR@2 | — | 0,775 | — |
 | Sucesso ponta a ponta | — | 85% | ADR-13 |
 | Economia de custo | — | **77,8%** | — |
 | Economia de latência | — | 97,6% (65,3% comparável) | ADR-13 |

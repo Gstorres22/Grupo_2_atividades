@@ -132,7 +132,9 @@ case-agents/
     ├── eval/
     │   ├── generate_eval_set.py   amplia o conjunto de teste via LLM
     │   ├── judge.py               LLM-as-judge · Precision@K semântico
-    │   └── metrics.py             métricas estendidas
+    │   ├── run_batch.py           executa lotes de mensagens pelo pipeline
+    │   ├── model_bakeoff.py       compara modelos candidatos a orquestrador
+    │   └── calibrar_cascata.py    calibra os limiares da V1.0.2
     │
     ├── notebooks/                 desenvolvimento passo a passo
     └── cache/                     embeddings persistidos (não versionado)
@@ -166,16 +168,32 @@ flowchart TD
     style E3 fill:#ffeaea,stroke:#c44
 ```
 
-### O problema que o Estágio 2 resolve
+### O problema que o Estágio 2 ataca
 
 O catálogo tem 285 tools com quase-duplicatas **propositais**. Para várias queries, a tool
 mais parecida lexicalmente **não** é a correta:
 
-| Query | Tool correta | O que a similaridade retorna |
-|---|---|---|
-| "Quanto eu tenho disponível na conta agora?" | `consultar_saldo` | `consultar_valor_disponivel_conta` |
-| "Manda o pdf da minha fatura atual" | `consultar_fatura` | `enviar_pdf_fatura_atual` |
-| "Cobraram algo errado, quero o dinheiro de volta" | `estornar_transacao` | `reclamar_cobranca_errada_cartao_dinheiro_volta` |
+| Query | Tool correta | Sem o prior | Com o prior |
+|---|---|---|---|
+| "Manda o pdf da minha fatura atual" | `consultar_fatura` | `enviar_pdf_fatura_atual` | ✅ corrigido |
+| "Quero parcelar minha fatura em 3 vezes" | `parcelar_fatura` | `parcelar_fatura_numero_vezes_escolhido` | ✅ corrigido |
+| "Preciso saber o saldo disponível pra pix" | `consultar_saldo` | `consultar_saldo_disponivel_pix` | ✅ corrigido |
+| "Quanto eu tenho disponível na conta agora?" | `consultar_saldo` | `consultar_valor_disponivel_conta` | ❌ **ainda falha** |
+| "Cobraram algo errado, quero o dinheiro de volta" | `estornar_transacao` | `reclamar_cobranca_errada...` | ❌ **ainda falha** |
+
+O prior corrige **8 das 20** queries com ferramenta esperada, levando o Precision@2 de 0,45 a
+0,85. **Três continuam falhando** — as duas acima e `"Preciso mudei de casa, como mudo o CEP?"`.
+
+Os casos que sobram têm duas causas distintas, e nenhuma delas o prior resolve:
+
+- **A isca também tem nome curto.** `consultar_valor_disponivel_conta` tem 4 tokens — não é
+  longa o bastante para o prior derrubá-la.
+- **Não há sobreposição de palavras.** Em "mudei de casa / CEP" → `alterar_endereco`, a palavra
+  "endereço" simplesmente não aparece. Nenhum reordenamento recupera o que não entrou nas
+  candidatas; isso é problema de **recall**, e é o que o estágio vetorial ataca.
+
+Há testes dedicados a essas falhas conhecidas (`test_prior_nao_resolve_tudo`), para que elas
+sejam documentadas em vez de virarem surpresa.
 
 Efeito medido de cada camada da solução:
 

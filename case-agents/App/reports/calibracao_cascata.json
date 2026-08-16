@@ -1,0 +1,60 @@
+{
+  "limiar_confianca": 0.65,
+  "limiar_familiaridade": 0.41771175264418076,
+  "cobertura_esperada": 0.2727272727272727,
+  "precisao_esperada": 1.0,
+  "n_treino": 53,
+  "percentil_familiaridade": 90.0,
+  "familiaridade_interna_do_treino": {
+    "p25": 0.27465227259887776,
+    "p50": 0.33644772257954364,
+    "p75": 0.3682425376064936,
+    "p90": 0.41771175264418076,
+    "max": 0.5020073178984551
+  },
+  "curva": [
+    {
+      "limiar_confianca": 0.55,
+      "limiar_familiaridade": 0.41771175264418076,
+      "n_desviadas": 9,
+      "cobertura_fast_path": 0.4090909090909091,
+      "precisao": 0.8888888888888888
+    },
+    {
+      "limiar_confianca": 0.6,
+      "limiar_familiaridade": 0.41771175264418076,
+      "n_desviadas": 8,
+      "cobertura_fast_path": 0.36363636363636365,
+      "precisao": 0.875
+    },
+    {
+      "limiar_confianca": 0.65,
+      "limiar_familiaridade": 0.41771175264418076,
+      "n_desviadas": 6,
+      "cobertura_fast_path": 0.2727272727272727,
+      "precisao": 1.0
+    },
+    {
+      "limiar_confianca": 0.7,
+      "limiar_familiaridade": 0.41771175264418076,
+      "n_desviadas": 3,
+      "cobertura_fast_path": 0.13636363636363635,
+      "precisao": 1.0
+    },
+    {
+      "limiar_confianca": 0.75,
+      "limiar_familiaridade": 0.41771175264418076,
+      "n_desviadas": 2,
+      "cobertura_fast_path": 0.09090909090909091,
+      "precisao": 1.0
+    },
+    {
+      "limiar_confianca": 0.8,
+      "limiar_familiaridade": 0.41771175264418076,
+      "n_desviadas": 2,
+      "cobertura_fast_path": 0.09090909090909091,
+      "precisao": 1.0
+    }
+  ],
+  "metodo": "CONFIANCA: validacao cruzada 5-fold estratificada sobre os 53 exemplos de treino. FAMILIARIDADE: percentil 90 da similaridade dos exemplos de treino entre si — criterio relativo, que exige que a mensagem nova se pareca com o treino mais do que o treino se parece consigo mesmo. Nenhum conjunto de teste foi consultado."
+}

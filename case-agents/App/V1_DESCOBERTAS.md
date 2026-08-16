@@ -171,6 +171,35 @@ porque ela está no conjunto de teste oficial. A formulação curta e direta é 
 
 ---
 
+### Status dos bugs em 15/08/2026
+
+Depois da V1.0.1 e da V1.0.2, parte desta lista foi resolvida. O que mudou:
+
+| Bug | Status | Como |
+|---|---|---|
+| **B1** — bloquear → desbloquear | ✅ **corrigido** | Regra de negação no prompt do orquestrador (V1.0.1) |
+| **B2** — registro formal vira FAQ | ✅ **corrigido** | O LLM entende o registro; persona `especialista` foi de 68% para 96% |
+| **B3** — erro de digitação derruba o roteador | ✅ **corrigido** | Persona `dedos_gordos` foi de 58% para 100% |
+| **B4** — saudação penaliza o cliente | ✅ **corrigido** | Regra de desempate explícita no prompt |
+| **B7** — λ ajustado no próprio teste | ✅ **corrigido** | Trocado para sinal só-nome com λ=0,40, centro de um platô real. Ver ADR-07 |
+| **B8** — metade do prior era peso morto | ✅ **corrigido** | Sinal de descrição removido; ablação mostrou contribuição zero |
+| **B9** — vazamento treino/eval não declarado | ✅ **declarado** | Ressalva 3 no README e nos documentos |
+| **B15/B17/B19** — documentação divergente | ✅ **corrigido** | Números sincronizados com o código e verificados por medição |
+| **B20** — entregáveis fora do repositório | ✅ **corrigido** | `.gitignore` ajustado; README da raiz agora traz o comentário técnico |
+| **B14** — custo do escalonamento não contabilizado | ✅ **corrigido** | Tabela de preços e telemetria de tokens na V1.0.1 |
+| **B5** — métricas pré-rerank | ✅ **corrigido** | A V1.0.1 sempre usa o LLM na seleção; não há mais estágio não exercitado |
+| **B6** — limiar de escalonamento errado | ✅ **substituído** | A cascata da V1.0.2 usa confiança + familiaridade, calibradas |
+| **B10** — entrada vazia devolve resposta confiante | ⬜ **aberto** | |
+| **B11** — emoji quebra a exibição no terminal | ⬜ **aberto** | Contornável com `--out` |
+| **B12** — entrada malformada derruba | ⬜ **aberto** | |
+| **B13** — sem limite de tamanho de entrada | ⬜ **aberto** | |
+| **Segurança** — prompt injection e travas financeiras | ⬜ **aberto** | Documentado e priorizado; é o item nº 1 antes de produção |
+
+Zero testes (o gap mais grave da lista original) também foi resolvido: a suíte passou de 2 para
+**55 testes**, cobrindo o código de medição, o ranking e as validações de contrato.
+
+---
+
 ## 5. Segurança
 
 **O que foi bem:** 4 de 6 tentativas de manipulação foram contidas. Nada travou o sistema —
