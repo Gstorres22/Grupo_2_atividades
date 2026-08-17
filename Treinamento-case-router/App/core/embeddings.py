@@ -43,6 +43,7 @@ segunda execucao, e a unica chamada de rede por query e o embedding da query.
 O cache e enderecado por conteudo: a chave e o hash do texto + o nome do modelo.
 Trocar de modelo de embedding invalida as entradas antigas automaticamente, sem
 precisar limpar nada na mao.
+
 """
 from __future__ import annotations
 

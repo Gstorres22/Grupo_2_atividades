@@ -1,7 +1,0 @@
-azure-functions
-azure-search-documents==11.6.0b4
-pypdf
-python-dotenv
-langchain
-langchain-openai
-pydantic

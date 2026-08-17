@@ -1,12 +1,11 @@
 """Orquestracao do cerebro de roteamento como grafo de estado (LangGraph).
 
 ===============================================================================
-POR QUE LANGGRAPH AQUI (e por que NAO no nucleo do case)
+Aplicação do LangGra´ph
 ===============================================================================
 
-O que este case chama de "cerebro de roteamento" e, na pratica, uma sequencia
-de DECISOES CONDICIONAIS de custo. O LangGraph modela exatamente isso: nos que
-executam e arestas condicionais que escolhem o proximo no. Ganhos concretos:
+A ideia do fluxo é uma sequencia de DECISOES de custo. O LangGraph modela exatamente isso: 
+nos que executam e arestas condicionais que escolhem o proximo no. Ganhos concretos:
 
   * As decisoes de custo viram estrutura explicita e auditavel, em vez de
     `if/else` espalhados. Da para desenhar o grafo e discutir a arquitetura.

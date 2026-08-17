@@ -1,14 +1,9 @@
-"""Configuracao central da camada de aplicacao.
+"""
+Configurações do sistema, carregadas de variáveis de ambiente e .env.
 
-Le o `App/.env` e expoe as configuracoes como um objeto tipado. Nenhum outro
-modulo deve ler `os.environ` diretamente — assim existe um unico lugar para
-auditar o que e configuravel e qual e o padrao de cada coisa.
+E subagentes de testes, (personas que eu simulei como teste)
 
-PRINCIPIO DE DESIGN: degradacao graciosa.
-Se nao houver `OPENAI_API_KEY`, nada quebra. `llm_enabled` vira False e todo o
-fluxo roda no modo local (lexico puro), que e exatamente o modo em que os
-testes e o `run_case.py` do nucleo rodam. Isso e proposital: a solucao do case
-nao pode depender de rede para ser avaliada.
+
 """
 from __future__ import annotations
 
@@ -16,20 +11,14 @@ import os
 from dataclasses import dataclass
 from typing import Optional
 
-# APP_DIR e CASE_DIR sao resolvidos no `App/__init__.py`, que roda antes de
-# qualquer submodulo. Eles NAO sao mais derivados um do outro: desde que esta
-# camada saiu de dentro de `entregavel-case-router/`, "a pasta acima do App" deixou de ser
-# a pasta do case. Reexportamos aqui para nao quebrar quem ja importava daqui.
-from App import APP_DIR, CASE_DIR  # reexport proposital
+from App import APP_DIR, CASE_DIR
 
 CACHE_DIR = APP_DIR / "cache"
 
 
 def _load_dotenv() -> None:
-    """Carrega App/.env se o python-dotenv estiver instalado.
-
-    O import e opcional de proposito: o nucleo nao depende de dotenv, e quem
-    rodar so o case nao precisa te-lo instalado.
+    """
+    Coloquei isso aqui mas não é obrigatoriom, se for só o case não precisa ter isso instalado, agora se for rodar tudo tem que ter
     """
     try:
         from dotenv import load_dotenv
@@ -62,6 +51,7 @@ class Settings:
     enable_llm_escalation: bool
     router_confidence_threshold: float
     retriever_margin_threshold: float
+
     # --- V1.0.1: orquestrador por LLM ---
     orchestrator_model: str
     orchestrator_reasoning_effort: str
@@ -71,6 +61,7 @@ class Settings:
     FABRICA da familia 5.6 e "medium", que gasta tokens invisiveis cobrados como
     saida. Para classificacao usamos "none": medimos 23 tokens de raciocinio por
     chamada no default contra 0 com "none", sem ganho de acerto que justifique."""
+
     # --- Camada de testes com subagentes (personas e avaliadores) ---
     agents_model: str
     """Modelo usado pelos subagentes que TESTAM o sistema.
@@ -87,20 +78,16 @@ class Settings:
 
     @property
     def agents_enabled(self) -> bool:
-        """A camada de subagentes (personas e avaliadores) pode rodar?
-
-        Os subagentes NAO participam do pipeline de atendimento — nem na V1,
-        nem na V1.0.1. Eles apenas geram os casos de teste e avaliam os
-        resultados, sempre offline.
+        """
+        Subagentes não particinpam do pipeline principal, mas podem ser chamados em testes.
         """
         return bool(self.openai_api_key)
 
     def describe(self) -> str:
-        """Resumo legivel do modo de operacao — util no topo dos notebooks."""
         if not self.openai_api_key:
-            return "MODO LOCAL (sem OPENAI_API_KEY): busca lexica pura, sem escalonamento."
+            return
         if not self.enable_llm_escalation:
-            return "MODO LOCAL (ENABLE_LLM_ESCALATION=false): chave presente, mas desligada."
+            return
         return (
             f"MODO CASCATA: embeddings={self.embedding_model}, "
             f"escalonamento={self.model_small}, "

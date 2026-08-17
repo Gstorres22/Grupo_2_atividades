@@ -1,13 +1,8 @@
-"""Cascata de escalonamento — quando (e so quando) vale gastar um LLM.
+"""
 
 ===============================================================================
-A IDEIA CENTRAL DO CASE, APLICADA DUAS VEZES
+Cascata de escalonamento
 ===============================================================================
-
-O case pede para escolher "o caminho mais barato e rapido possivel". A leitura
-simplista seria "nunca use LLM". A leitura correta e: use LLM APENAS onde o
-componente barato admite que nao sabe. Isso e uma cascata (ou modelo em
-cascata / cascading inference), e aplicamos em dois pontos:
 
   1. ROTEAMENTO — o classificador local devolve uma probabilidade. Se ela ficar
      abaixo do limiar, a query esta na faixa cinzenta e um LLM pequeno desempata.
@@ -17,7 +12,7 @@ cascata / cascading inference), e aplicamos em dois pontos:
      ranking local nao tem conviccao para separa-las. So nesse caso as N
      candidatas (nao as 285 tools!) vao para um LLM reordenar.
 
-O QUE ISSO PRESERVA: a economia que o case pede para demonstrar. Um rerank em
+Isso preserva economia e rerank em
 100% das queries destruiria o ganho de custo/latencia; um rerank em 10% delas
 custa 10% do preco e captura a maior parte do ganho de qualidade.
 
