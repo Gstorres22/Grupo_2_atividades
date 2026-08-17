@@ -145,7 +145,7 @@ médio dos 53 exemplos de treino, em direções opostas.
 ## 5. Estrutura de pastas (o que foi acrescentado)
 
 ```
-case-agents/App/
+Treinamento-case-router/App/
 │
 ├── versions/                      🆕 as duas versões sob um contrato comum
 │   ├── base.py                       BasePipeline + PipelineResult
@@ -181,22 +181,26 @@ roda com o `requirements.txt` original, sem rede.
 
 ## 6. Como rodar
 
+Os comandos abaixo rodam a partir de `Treinamento-case-router/`.
+
 **Comparativo de modelos candidatos:**
 
 ```bash
 python -m App.eval.model_bakeoff
 ```
 
-**Bateria completa (personas geram → duas versões rodam → avaliadores julgam):**
+**Bateria completa (personas geram → as versões rodam → avaliadores julgam):**
 
 ```bash
-python -m App.agents.run_suite --n-por-persona 30
+python -m App.agents.run_suite --gerar-dataset --n-por-persona 30
 ```
 
-**Rodada rápida, reaproveitando o conjunto já gerado:**
+**Rodada padrão, reaproveitando o conjunto já gerado.** É o modo normal: gerar mensagens novas
+troca o conjunto de teste e quebra a comparação com as rodadas anteriores, por isso reaproveitar
+é o default e gerar é que precisa de flag explícita.
 
 ```bash
-python -m App.agents.run_suite --pular-geracao
+python -m App.agents.run_suite
 ```
 
 > ⚠️ Tudo aqui precisa de `OPENAI_API_KEY` em `App/.env`. O núcleo do case em

@@ -1,21 +1,22 @@
 # V1 × V1.0.1 — Resultado da Comparação
 
 **Data:** 14/08/2026 · **Experimento:** 180 mensagens, as mesmas nas duas versões
-**Documentos irmãos:** [V1_0_1_ARCHITECTURE.md](V1_0_1_ARCHITECTURE.md) · [V1_0_1_DECISIONS.md](V1_0_1_DECISIONS.md) · [V1_DESCOBERTAS.md](V1_DESCOBERTAS.md)
+**Documentos irmãos:** [V1_0_1_ARCHITECTURE.md](../V1_0_1_ARCHITECTURE.md) · [V1_0_1_DECISIONS.md](../V1_0_1_DECISIONS.md) · [V1_DESCOBERTAS.md](../V1_DESCOBERTAS.md)
 
-> ⚠️ **Números desta rodada são históricos.** Foram medidos **antes** da correção do prior de
-> generalidade ([ADR-07](DECISIONS.md#adr-07)), que trocou o sinal de especificidade e o valor
+> ⚠️ **Números desta rodada são históricos** — por isso este arquivo está em `docs/historico/`.
+> Foram medidos **antes** da correção do prior de
+> generalidade ([ADR-07](../DECISIONS.md#adr-07)), que trocou o sinal de especificidade e o valor
 > de `λ`. Como as versões compartilham o mesmo estágio de recuperação, todas melhoraram depois:
 > a V1 subiu de 75% para 85% de Hit@2 no conjunto oficial, e a V1.0.1 de 85% para 95%.
 >
-> **Para os números atuais, ver [V1_0_2_RESULTADO.md](V1_0_2_RESULTADO.md).**
+> **Para os números atuais, ver [V1_0_2_RESULTADO.md](../V1_0_2_RESULTADO.md).**
 >
 > Este documento é mantido como está porque o registro do experimento — o método, as ressalvas
 > e os pareceres — continua válido, e reescrever números de uma execução que não aconteceu seria
 > falsear o histórico.
 
 > Escrito para ser entendido sem conhecimento prévio de IA. Termos técnicos estão no
-> [glossário do V1_DESCOBERTAS.md](V1_DESCOBERTAS.md#glossário).
+> [glossário do V1_DESCOBERTAS.md](../V1_DESCOBERTAS.md#glossário).
 
 ---
 

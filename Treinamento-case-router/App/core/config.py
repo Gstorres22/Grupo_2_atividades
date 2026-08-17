@@ -14,11 +14,14 @@ from __future__ import annotations
 
 import os
 from dataclasses import dataclass
-from pathlib import Path
 from typing import Optional
 
-APP_DIR = Path(__file__).resolve().parent.parent
-CASE_DIR = APP_DIR.parent
+# APP_DIR e CASE_DIR sao resolvidos no `App/__init__.py`, que roda antes de
+# qualquer submodulo. Eles NAO sao mais derivados um do outro: desde que esta
+# camada saiu de dentro de `entregavel-case-router/`, "a pasta acima do App" deixou de ser
+# a pasta do case. Reexportamos aqui para nao quebrar quem ja importava daqui.
+from App import APP_DIR, CASE_DIR  # reexport proposital
+
 CACHE_DIR = APP_DIR / "cache"
 
 

@@ -1,0 +1,20 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+.DS_Store
+
+# O relatorio gerado pelo run_case.py e o ENTREGAVEL Nº 2 do case, entao
+# precisa estar no repositorio. A regra original ignorava `reports/` inteiro;
+# aqui ignoramos o conteudo da pasta MENOS o relatorio.
+reports/*
+!reports/candidate_report.json
+
+# --- Credenciais: NUNCA versionar ---
+# Nao ha `.env` nesta pasta (o entregavel roda offline, sem chave de API), mas a
+# regra fica como rede de seguranca: se alguem criar um aqui, ja nasce ignorado.
+.env
+.env.*
+!.env.example

@@ -15,16 +15,16 @@
   "k": 2,
   "smart_pipeline": {
     "total_cost_usd": 0.20003499999999982,
-    "total_latency_ms": 59.90499998733867,
+    "total_latency_ms": 62.46699999883276,
     "cost_per_query_usd": 0.006667833333333328
   },
   "baseline_always_llm": {
     "total_cost_usd": 0.9000000000000006,
-    "total_latency_ms": 2737.5400999881094,
+    "total_latency_ms": 2739.693999998053,
     "cost_per_query_usd": 0.03000000000000002
   },
   "cost_savings_pct": 77.77388888888892,
-  "latency_savings_pct": 97.81172155295191,
+  "latency_savings_pct": 97.7199278459975,
   "router_detail": {
     "per_class": {
       "FAST_PATH": {
@@ -60,20 +60,20 @@
   "end_to_end_success_rate": 0.85,
   "latency_detail_ms": {
     "router": {
-      "p50": 0.9228499984601513,
-      "p95": 1.054599997587502,
-      "mean": 0.9318600001279265,
-      "max": 1.1052999907406047
+      "p50": 0.9412499998688872,
+      "p95": 1.0550999995757593,
+      "mean": 0.9297699999175771,
+      "max": 1.0717000004660804
     },
     "retrieval": {
-      "p50": 1.5766500000609085,
-      "p95": 1.7878999933600426,
-      "mean": 1.5974599991750438,
-      "max": 1.823099999455735
+      "p50": 1.6185499998755404,
+      "p95": 2.0787000003110734,
+      "mean": 1.7286950000652723,
+      "max": 2.615700000205834
     }
   },
-  "latency_savings_pct_comparable": 65.478394271275,
-  "smart_pipeline_latency_comparable_ms": 945.0427999836393,
+  "latency_savings_pct_comparable": 65.3366470854697,
+  "smart_pipeline_latency_comparable_ms": 949.6697999975368,
   "rows": [
     {
       "query": "Qual o valor da minha fatura desse mês?",

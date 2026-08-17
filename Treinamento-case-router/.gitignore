@@ -1,0 +1,35 @@
+# Treinamento-case-router/ — trabalho auxiliar, FORA do entregavel do case.
+#
+# O entregavel e `entregavel-case-router/`, que roda offline com o requirements.txt
+# original. Aqui fica tudo que foi construido em volta dele: a camada de
+# aplicacao (App/), a documentacao estendida e o material de apoio.
+#
+# Este arquivo existe por um motivo de seguranca concreto: o `.gitignore` do
+# entregavel-case-router/ so vale dentro daquela pasta. Ao mover o App/ para ca, a regra
+# que protegia o `.env` deixaria de valer — e nao ha `.gitignore` na raiz do
+# repositorio. Sem este arquivo, um `git add .` versionaria a chave da OpenAI.
+
+# --- Credenciais: NUNCA versionar ---
+.env
+.env.*
+!.env.example
+
+# --- Artefatos locais, regeneraveis ---
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+.DS_Store
+
+# Cache de embeddings do catalogo: binario, regeneravel em ~1 chamada de API.
+App/cache/
+
+# Os JSON de relatorio SAO versionados de proposito — sao o registro dos
+# experimentos (personas, avaliadores, bateria das 3 versoes) e sem eles as
+# conclusoes da documentacao nao teriam como ser conferidas por outra pessoa.
+# Ja os logs brutos de terminal sao ruido regeneravel a cada rodada.
+App/reports/*_log.txt

@@ -286,7 +286,7 @@ Ordenado por impacto real, não por facilidade.
 
 ## 8. Como rodar
 
-O núcleo funciona **sem chave de API e sem internet**:
+O núcleo funciona **sem chave de API e sem internet**. A partir de `entregavel-case-router/`:
 
 ```bash
 python -m pytest candidate_starter/tests -v
@@ -296,7 +296,7 @@ python -m pytest candidate_starter/tests -v
 python -m candidate_starter.run_case
 ```
 
-A camada completa, com IA e LangGraph:
+A camada completa, com IA e LangGraph — esta a partir de `Treinamento-case-router/`:
 
 ```bash
 python -m App.main

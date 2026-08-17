@@ -138,7 +138,7 @@ preço de tabela e benchmark público não dizem qual modelo acerta **na nossa t
 classificar português brasileiro e escolher entre ferramentas quase-duplicadas.
 
 **Decisão.** Rodar o mesmo pipeline, com o mesmo prompt e as mesmas mensagens, trocando apenas o
-modelo ([`App/eval/model_bakeoff.py`](eval/model_bakeoff.py)).
+modelo ([`App/eval/model_bakeoff.py`](../App/eval/model_bakeoff.py)).
 
 **Evidência:**
 

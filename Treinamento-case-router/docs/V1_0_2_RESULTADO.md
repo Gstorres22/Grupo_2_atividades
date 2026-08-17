@@ -1,7 +1,7 @@
 # V1.0.2 (Cascata Híbrida) — Resultado e Recomendação
 
 **Data:** 15/08/2026 · **Experimento:** 180 mensagens, as mesmas nas três versões
-**Documentos irmãos:** [V1_0_2_DECISIONS.md](V1_0_2_DECISIONS.md) · [V1_0_1_COMPARACAO.md](V1_0_1_COMPARACAO.md) · [V1_DESCOBERTAS.md](V1_DESCOBERTAS.md)
+**Documentos irmãos:** [V1_0_2_DECISIONS.md](V1_0_2_DECISIONS.md) · [V1_0_1_COMPARACAO.md](historico/V1_0_1_COMPARACAO.md) · [V1_DESCOBERTAS.md](V1_DESCOBERTAS.md)
 
 > Medido depois da correção do prior de generalidade (ADR-07): sinal só-nome, `λ = 0,40`.
 > Como as três versões compartilham o mesmo estágio de recuperação, **todas melhoraram**.

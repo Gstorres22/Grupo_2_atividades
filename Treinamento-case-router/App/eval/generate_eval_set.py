@@ -39,7 +39,7 @@ import random
 from pathlib import Path
 from typing import Dict, List
 
-from App.core.config import CASE_DIR, get_settings
+from App.core.config import APP_DIR, get_settings
 from common.data_loader import load_eval_dataset
 
 PARAPHRASE_PROMPT = """Voce gera dados de teste para um roteador de atendimento bancario.
@@ -167,7 +167,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Amplia o conjunto de avaliacao via LLM.")
     parser.add_argument("--variations", type=int, default=4)
     parser.add_argument("--per-category", type=int, default=15)
-    parser.add_argument("--out", default=str(CASE_DIR / "App" / "eval" / "eval_ampliado.json"))
+    parser.add_argument("--out", default=str(APP_DIR / "eval" / "eval_ampliado.json"))
     args = parser.parse_args()
 
     dataset = generate(args.variations, args.per_category)

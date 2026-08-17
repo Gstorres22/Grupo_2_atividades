@@ -92,53 +92,88 @@ O núcleo declara o gancho e funciona sem ele. Quem tem a chave de API decide pl
 
 ## 3. Estrutura de pastas
 
+A separação é **física, não só conceitual**: as duas camadas são pastas irmãs no repositório. O
+entregável não contém nem menciona nada da camada de aplicação em código — só em comentários — e
+por isso é entregue e avaliado sozinho.
+
 ```
-case-agents/
+<repositório>/
 │
-├── candidate_starter/          🟦 ENTREGÁVEL DO CASE — núcleo puro
-│   ├── router.py                  Pilar 1 · classificação de rota
-│   ├── retrieval.py               Pilar 2 · busca híbrida em 2 estágios
-│   ├── harness.py                 Pilar 3 · métricas e benchmark
-│   ├── run_case.py                (original) orquestra e salva o relatório
-│   └── tests/test_sanity.py       (original) testes de sanidade
+├── entregavel-case-router/         🟦 ENTREGÁVEL DO CASE
+│   │
+│   ├── candidate_starter/          núcleo puro · sklearn + stdlib
+│   │   ├── router.py                  Pilar 1 · classificação de rota
+│   │   ├── retrieval.py               Pilar 2 · busca híbrida em 2 estágios
+│   │   ├── harness.py                 Pilar 3 · métricas e benchmark
+│   │   ├── run_case.py                (original) orquestra e salva o relatório
+│   │   └── tests/                     55 testes
+│   │
+│   ├── common/                     ⬜ INTOCADO — contratos e mocks fornecidos
+│   │   ├── interfaces.py              ABCs que router e retriever implementam
+│   │   ├── schemas.py                 RouteResult, ToolMatch, RetrievalResult
+│   │   ├── mock_llm.py                custos e latências simuladas
+│   │   └── data_loader.py             leitura dos JSONs
+│   │
+│   ├── data/                       ⬜ INTOCADO
+│   │   ├── tools_registry.json        285 tools (com quase-duplicatas propositais)
+│   │   ├── router_training_data.json  53 exemplos rotulados
+│   │   └── eval_dataset.json          30 queries de avaliação
+│   │
+│   ├── reports/candidate_report.json  📄 saída do harness (entregável nº2)
+│   ├── README.md                      comentário técnico (entregável nº3)
+│   └── requirements.txt            ⬜ INTOCADO
 │
-├── common/                     ⬜ INTOCADO — contratos e mocks fornecidos
-│   ├── interfaces.py              ABCs que router e retriever implementam
-│   ├── schemas.py                 RouteResult, ToolMatch, RetrievalResult
-│   ├── mock_llm.py                custos e latências simuladas
-│   └── data_loader.py             leitura dos JSONs
-│
-├── data/                       ⬜ INTOCADO
-│   ├── tools_registry.json        285 tools (com quase-duplicatas propositais)
-│   ├── router_training_data.json  53 exemplos rotulados
-│   └── eval_dataset.json          30 queries de avaliação
-│
-├── reports/candidate_report.json  📄 saída do harness (entregável nº2)
-│
-└── App/                        🟩 CAMADA DE APLICAÇÃO
-    ├── ARCHITECTURE.md            este documento
-    ├── DECISIONS.md               registro de decisões (o porquê de cada escolha)
-    ├── .env.example               modelo de credenciais (versionado, sem valores)
-    ├── .env                       credenciais reais (NUNCA versionado)
-    ├── requirements-app.txt       dependências só desta camada
-    ├── main.py                    entrypoint local · esqueleto do futuro Lambda
+└── Treinamento-case-router/        🟩 MATERIAL DE APOIO — fora do entregável
     │
-    ├── core/
-    │   ├── config.py              único lugar que lê variáveis de ambiente
-    │   ├── embeddings.py          estágio vetorial + cache em disco
-    │   ├── escalation.py          cascata: quando vale gastar um LLM
-    │   └── graph.py               StateGraph do LangGraph
+    ├── Case_Storytelling_Revisao.docx  a jornada do projeto, em narrativa
     │
-    ├── eval/
-    │   ├── generate_eval_set.py   amplia o conjunto de teste via LLM
-    │   ├── judge.py               LLM-as-judge · Precision@K semântico
-    │   ├── run_batch.py           executa lotes de mensagens pelo pipeline
-    │   ├── model_bakeoff.py       compara modelos candidatos a orquestrador
-    │   └── calibrar_cascata.py    calibra os limiares da V1.0.2
+    ├── docs/                       DOCUMENTAÇÃO ATUAL
+    │   ├── ARCHITECTURE.md            este documento
+    │   ├── DECISIONS.md               ADR-01 a 14 · o porquê de cada escolha
+    │   ├── V1_DESCOBERTAS.md          bugs achados com personas de usuário
+    │   ├── V1_0_1_ARCHITECTURE.md     o orquestrador por LLM
+    │   ├── V1_0_1_DECISIONS.md        ADR-15 a 26
+    │   ├── V1_0_2_DECISIONS.md        ADR-27 a 32
+    │   ├── V1_0_2_RESULTADO.md     ⭐ o resultado que decidiu a arquitetura
+    │   └── historico/
+    │       └── V1_0_1_COMPARACAO.md   números anteriores à correção do prior
     │
-    ├── notebooks/                 desenvolvimento passo a passo
-    └── cache/                     embeddings persistidos (não versionado)
+    └── App/                        CAMADA DE APLICAÇÃO (código)
+        ├── .env.example               modelo de credenciais (versionado, sem valores)
+        ├── .env                       credenciais reais (NUNCA versionado)
+        ├── requirements-app.txt       dependências só desta camada
+        ├── __init__.py                acha o entregável e o põe no sys.path
+        ├── main.py                    entrypoint local · esqueleto do futuro Lambda
+        │
+        ├── core/
+        │   ├── config.py              único lugar que lê variáveis de ambiente
+        │   ├── embeddings.py          estágio vetorial + cache em disco
+        │   ├── escalation.py          cascata: quando vale gastar um LLM
+        │   └── graph.py               StateGraph do LangGraph
+        │
+        ├── versions/                  V1 clássica, V1.0.1 LLM, V1.0.2 híbrida
+        ├── agents/                    5 personas + 2 avaliadores especialistas
+        │
+        ├── eval/
+        │   ├── generate_eval_set.py   amplia o conjunto de teste via LLM
+        │   ├── judge.py               LLM-as-judge · Precision@K semântico
+        │   ├── run_batch.py           executa lotes de mensagens pelo pipeline
+        │   ├── model_bakeoff.py       compara modelos candidatos a orquestrador
+        │   └── calibrar_cascata.py    calibra os limiares da V1.0.2
+        │
+        ├── reports/                   JSON dos experimentos (versionados)
+        │   └── historico/
+        ├── notebooks/                 desenvolvimento passo a passo
+        └── cache/                     embeddings persistidos (não versionado)
 ```
+
+> **Por que a camada de aplicação saiu de dentro do entregável.** Enquanto ela morava lá, quem
+> abrisse o entregável via primeiro nove arquivos de documentação e uma pasta `App/` maior que o
+> próprio case — e precisava descobrir sozinho o que era pedido e o que era extra. A direção de
+> dependência sempre foi `App/ → candidate_starter/`; mover a pasta apenas tornou isso visível na
+> estrutura. O preço é que o `App/` não herda mais o `sys.path` do case, e por isso o
+> `App/__init__.py` localiza o entregável sozinho — **procurando por conteúdo, não por nome**,
+> justamente para sobreviver a renomeações como esta.
 
 ---
 
@@ -208,7 +243,7 @@ Efeito medido de cada camada da solução:
 
 ## 5. Como rodar
 
-**Núcleo (o que o avaliador roda) — sem chave, sem rede:**
+**Núcleo (o que o avaliador roda) — a partir de `entregavel-case-router/`, sem chave e sem rede:**
 
 ```bash
 pip install -r requirements.txt
@@ -222,7 +257,7 @@ python -m pytest candidate_starter/tests -v
 python -m candidate_starter.run_case
 ```
 
-**Camada de aplicação — com LangGraph e OpenAI:**
+**Camada de aplicação — a partir de `Treinamento-case-router/`, com LangGraph e OpenAI:**
 
 ```bash
 pip install -r App/requirements-app.txt
@@ -231,6 +266,10 @@ pip install -r App/requirements-app.txt
 ```bash
 python -m App.main
 ```
+
+> O diretório de trabalho é diferente em cada bloco, e é de propósito: são duas camadas
+> independentes. O `App/` acha o `entregavel-case-router/` sozinho (ver `App/__init__.py`), então basta
+> estar em `Treinamento-case-router/` — não é preciso configurar `PYTHONPATH`.
 
 Sem `OPENAI_API_KEY`, `App/main.py` roda igual, em modo lexical, e avisa no console.
 
